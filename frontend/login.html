@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | SmartCare</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body class="page-login">
@@ -58,8 +56,29 @@
         </div>
     </footer>
 
-    <script src="js/app.js"></script>
-    <script src="js/login.js"></script>
-</body>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const form = document.querySelector('form');
 
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });       
+            document.querySelectorAll('.nav-links a').forEach((link) => {
+                link.addEventListener('click', () => navLinks.classList.remove('open'));
+            });
+        }        
+        document.querySelectorAll('[data-year]').forEach((el) => {
+            el.textContent = new Date().getFullYear();
+        });
+
+        if (form) {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                window.location.href = 'patient-dashboard.html';
+            });
+        }
+    </script>
+</body>
 </html>

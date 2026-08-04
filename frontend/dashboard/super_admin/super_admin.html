@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin_page</title>
-  <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Admin Dashboard</title>
+    <link rel="stylesheet" href="super_admin.css" />
+    
 </head>
 
 <body>
-    <!-- Sidebar Container -->
-    <div id="sidebar-container"></div>
-     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
-    <div id="topbar"></div>
-        
-    <main>
-        <div class="card">
-            <div id="clinic">
-                <h2>Number Of clinics</h2>
-                <label id="noOfClinic"> ......</label>
+    <div class="page-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">SmartCare Super Admin</p>
+                <h1>Clinic Management Dashboard</h1>
+                <p>Select a clinic to open its dedicated management page.</p>
             </div>
-            <div id="patient">
-                <h2>Number Of Patients</h2>
-                <label id="noOfPatient"> ......</label>
-            </div>
-        </div>
-    </main> 
-    
-   
-    
+            <div class="hero-badge">5 Clinics</div>
+        </section>
 
-    <script src="../../assets/js/sidePanel/superAdmin.js"></script>
+        <section class="clinic-grid" aria-label="Clinic selection cards">
+            <a class="clinic-card" href="dental_clinic.html" data-page="dental_clinic.html">
+                <div class="icon-wrap">🦷</div>
+                <h2>Dental Clinic</h2>
+                <p>Advanced dental care and smile-focused treatments.</p>
+            </a>
+
+            <a class="clinic-card" href="derma_clinic.html" data-page="derma_clinic.html">
+                <div class="icon-wrap">🧴</div>
+                <h2>Derma Clinic</h2>
+                <p>Dermatology services for healthy and glowing skin.</p>
+            </a>
+
+           
+
+            <a class="clinic-card" href="eye_clinic.html" data-page="eye_clinic.html">
+                <div class="icon-wrap">👁️</div>
+                <h2>Eye Clinic</h2>
+                <p>Vision care, screenings, and ophthalmology support.</p>
+            </a>
+
+            
+
+           
+
+            <a class="clinic-card" href="gynecology_clinic.html" data-page="gynecology_clinic.html">
+                <div class="icon-wrap">🌸</div>
+                <h2>Gynecology Clinic</h2>
+                <p>Women's wellness, consultations, and specialist care.</p>
+            </a>
+
+            <a class="clinic-card" href="general_clinic.html" data-page="general_clinic.html">
+                <div class="icon-wrap">🏥</div>
+                <h2>General Clinic</h2>
+                <p>Primary care services for everyday health needs.</p>
+            </a>
+        </section>
+    </div>
+
+    <script src="super_admin.js"></script>
 </body>
+
 </html>
