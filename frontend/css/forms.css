@@ -1,0 +1,62 @@
+.page-shell {
+    padding: 2.5rem 0 3.5rem;
+}
+
+.auth-card,
+.contact-card {
+    background: var(--surface);
+    border-radius: 1.3rem;
+    padding: 1.35rem;
+    box-shadow: 0 16px 36px rgba(23, 50, 77, 0.08);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+}
+
+label {
+    font-weight: 700;
+    color: var(--text);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid #dfeaf6;
+    border-radius: 0.9rem;
+    padding: 0.85rem 0.95rem;
+    font: inherit;
+    color: var(--text);
+    background: #f9fcfe;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.inline-note {
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.inline-note.success {
+    color: #157a64;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

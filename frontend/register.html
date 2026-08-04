@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | SmartCare</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+</head>
+
+<body class="page-register">
+    <header>
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">SC</span>
+                <span>SmartCare</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a class="active" href="register.html">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell container">
+        <div class="auth-card">
+            <h1>Create your account</h1>
+            <p class="inline-note">Join SmartCare as a patient, doctor, or administrator.</p>
+            <form>
+                <div class="form-row">
+                    <div>
+                        <label for="first-name">First name</label>
+                        <input id="first-name" type="text" placeholder="Ada" required />
+                    </div>
+                    <div>
+                        <label for="last-name">Last name</label>
+                        <input id="last-name" type="text" placeholder="Lovelace" required />
+                    </div>
+                </div>
+
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="name@example.com" required />
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Create a password" required />
+
+                <button class="btn btn-primary" type="submit">Register</button>
+                <p class="inline-note">Already have an account? <a href="login.html">Sign in</a>.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span data-year></span> SmartCare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

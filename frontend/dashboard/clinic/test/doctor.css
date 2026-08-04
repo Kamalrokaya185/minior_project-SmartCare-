@@ -1,0 +1,276 @@
+:root {
+    --green: #2e9b5a;
+    --green-dark: #1f6f44;
+    --green-light: #eaf7ee;
+    --white: #ffffff;
+    --bg: #f4fbf7;
+    --text: #18372a;
+    --muted: #64776c;
+    --border: #dbeee3;
+    --shadow: 0 12px 35px rgba(15, 77, 45, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f4fcf7 0%, #eef8f2 100%);
+    color: var(--text);
+}
+
+.dashboard-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.topbar h1 {
+    margin: 0 0 6px;
+    font-size: 1.8rem;
+    color: var(--green-dark);
+}
+
+.topbar p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.top-badge {
+    background: var(--green);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+}
+
+.card {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.table-card {
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.table-header h2 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--green-dark);
+}
+
+.table-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.table-summary {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+th,
+td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-weight: 700;
+}
+
+tr:hover {
+    background: #f8fdf9;
+}
+
+.action-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(46, 155, 90, 0.16);
+}
+
+.btn-view {
+    background: var(--green-light);
+    color: var(--green-dark);
+}
+
+.btn-edit {
+    background: #f2f7ff;
+    color: #1f5fb3;
+}
+
+.btn-delete {
+    background: #fff2f2;
+    color: #c23d3d;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(7, 24, 15, 0.56);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.modal-content {
+    background: var(--white);
+    width: min(560px, 100%);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: var(--green-light);
+    color: var(--green-dark);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.modal-content h3 {
+    margin: 0 0 16px;
+    color: var(--green-dark);
+}
+
+.detail-list {
+    display: grid;
+    gap: 10px;
+}
+
+.detail-item {
+    padding: 10px 12px;
+    background: #f8fdf9;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.detail-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--green-dark);
+}
+
+.doctor-form {
+    display: grid;
+    gap: 12px;
+}
+
+.doctor-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.doctor-form input,
+.doctor-form textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font: inherit;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: var(--white);
+}
+
+@media (max-width: 700px) {
+    .dashboard-shell {
+        padding: 16px;
+    }
+
+    .table-card {
+        padding: 16px;
+    }
+
+    .topbar h1 {
+        font-size: 1.45rem;
+    }
+
+    .btn {
+        padding: 7px 10px;
+        font-size: 0.85rem;
+    }
+}

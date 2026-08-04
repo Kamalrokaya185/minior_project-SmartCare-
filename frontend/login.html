@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | SmartCare</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+</head>
+
+<body class="page-login">
+    <header>
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">SC</span>
+                <span>SmartCare</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a class="active" href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-shell container">
+        <div class="auth-card">
+            <h1>Welcome back</h1>
+            <p class="inline-note">Access your patient, doctor, or admin dashboard securely.</p>
+            <form>
+                <label for="email">Email address</label>
+                <input id="email" type="email" placeholder="you@example.com" required />
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Enter password" required />
+
+                <button class="btn btn-primary" type="submit">Log in
+                    
+                </button>
+                <!-- Instead of a plain submit button, use a selection driver -->
+                    <label>Submit & Go To: </label>
+                    <select onchange="if(this.value) window.location.href = this.value;">
+                        <option value="">-- Choose Destination --</option>
+                        <option value="dashboard/clinic/mainpage.html">Clinic page</option>
+                        <option value="dashboard/super_admin/super_admin.html">superAdmin page</option>
+                        <option value="patient-dashboard.html">Patient Page</option>
+                    </select>
+                <p class="inline-note">New here? <a href="register.html">Create an account</a>.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span data-year></span> SmartCare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

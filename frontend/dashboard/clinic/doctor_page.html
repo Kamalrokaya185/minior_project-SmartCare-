@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+        <div>
+            <h1>Doctor Management</h1>
+            <p>Track appointments and doctor records in one place.</p>
+        </div>
+
+        <section class="card table-card">
+            <div class="table-header">
+                <h2>Doctor Schedule Overview</h2>
+                <div class="table-header-actions">
+                    <span class="table-summary">10 records available</span>
+                    <button class="btn btn-primary" id="addDoctorBtn" type="button">Add Doctor</button>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Doctor Name</th>
+                            <th>Time Slot</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    <div id="detailModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3>Doctor Details</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3 id="formTitle">Edit Doctor Information</h3>
+            <form id="editForm" class="doctor-form">
+                <label>
+                    Doctor Name
+                    <input id="doctorName" type="text" required />
+                </label>
+                
+                <div id="timeSlotField">
+                    <label>
+                        Time Slot
+                        <input id="timeSlot" type="text" required />
+                    </label>
+                </div>
+                <label>
+                    Doctor Specialization
+                    <input id="specialization" type="text" required />
+                </label>
+                <label>
+                    Medical License Number
+                    <input id="licenseNumber" type="text" required />
+                </label>
+                <label>
+                    Address
+                    <textarea id="address" rows="2" required></textarea>
+                </label>
+                <label>
+                    Email Address
+                    <input id="email" type="email" required />
+                </label>
+                <label>
+                    Phone Number
+                    <input id="phone" type="tel" required />
+                </label>
+                <div class="form-actions">
+                    <button class="btn btn-delete" type="button" data-close="edit">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>
+    <script src="../../assets/js/doctor.js"></script>
+    <script src="../../assets/js/sidePanel/clinic.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <link rel="stylesheet" href="doctor.css" />
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    // Sidebar Container 
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+    <h2>Doctor</h2>
+
+
+</main>
+    <script src="doctor.js"></script>
+    <script src="../../assets/js/sidePanel/clinic.js"></script>
+</body>
+</html> -->

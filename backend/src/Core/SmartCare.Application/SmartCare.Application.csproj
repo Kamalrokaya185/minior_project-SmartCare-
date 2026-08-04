@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+    <EmbeddedResource Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+    <None Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="14.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SharedKernel\SmartCare.SharedKernel\SmartCare.SharedKernel.csproj" />
+    <ProjectReference Include="..\SmartCare.Domain\SmartCare.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin_page</title>
+    <Style>   
+/* 🔴 STEP 1: This CSS rule turns it OFF by default */
+.sidebar {
+    display: none; /* Hides it completely from the screen */
+}
+
+/* 🟢 STEP 2: This CSS rule turns it ON when the button adds the 'active' class */
+.sidebar.active {
+    display: block; /* Shows it instantly on the screen */
+}
+/* 🔴 CLOSED STATE: Hidden off-screen to the left */
+/* --- SIDEBAR RULES --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden off-screen left */
+    width: 250px;
+    height: 100vh;
+    background-color: #c81414;
+    transition: left 0.3s ease;
+}
+.sidebar.active {
+    left: 0; /* Slides into view */
+}
+
+
+/* --- MAIN CONTENT RULES --- */
+.content {
+    position: relative;
+    left: 0; /* Starts at normal position */
+    transition: left 0.3s ease; /* Matches the sidebar speed perfectly */
+}
+.content.active {
+    left: 250px; /* Shifts right exactly by the width of the sidebar */
+}
+    </Style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+        <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+
+
+    <!-- 1. The Button (Uses the exact class toggle logic on the sidebar) -->
+<button onclick="document.getElementById('sidebar').classList.toggle('active')">
+    ☰ Toggle Sidebar
+</button>
+
+<!-- 2. Your Sidebar -->
+<div class="sidebar" id="sidebar">
+    <ul>
+        <li><a>📊 Dashboard</a></li>
+        <li><a>🏢 Total Clinic</a></li>
+        <li><a>👤 Total Patients</a></li>
+        <li><a>💳 Payments History</a></li>
+        <li><a>🧾 Expenses</a></li>
+        <li><a>📈 Reports</a></li>
+        <li><a>⚙️ Settings</a></li>
+        <li><a> Contact Us</a></li>
+        <li><a>🚪 Logout</a></li>
+    </ul>
+</div>
+    <main class="content" id="main-content">
+
+
+        <!-- Clicking the button sets the 'open' attribute of the details element to true -->
+
+    <!-- <div onclick="this.classList.toggle('active')">open</div>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a>📊 Dashboard</a></li>
+            <li><a>🏢 Total Clinic</a></li>
+            <li><a>👤 Total Patients</a></li>
+        </ul>
+    </div> -->
+
+
+
+
+
+<!-- The details tag handles the open/close state natively
+<details>
+    <-- The summary tag acts as the clickable button -->
+    <!-- <summary style="cursor: pointer; font-size: 20px; padding: 10px;">☰ Open Sidebar</summary> -->
+
+    <!-- Sidebar Content -->
+    <!-- <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a>📊 Dashboard</a></li>
+            <li><a>🏢 Total Clinic</a></li>
+            <li><a>👤 Total Patients</a></li>
+            <li><a>💳 Payments History</a></li>
+            <li><a>🧾 Expenses</a></li>
+            <li><a>📈 Reports</a></li>
+            <li><a>⚙️ Settings</a></li>
+            <li><a> Contact Us</a></li>
+            <li><a>🚪 Logout</a></li>
+        </ul>
+    </div>
+</details> -->
+</div>
+</div >
+        <div class="card">
+            <div id="clinic">
+                <h2>Number Of clinics</h2>
+                <label id="noOfClinic"> ......</label>
+            </div>
+            <div id="patient">
+                <h2>Number Of Patients</h2>
+                <label id="noOfPatient"> ......</label>
+            </div>
+        </div>
+    </main> 
+    
+   
+    
+
+    <script src="../../assets/js/sidePanel_SuperAdmin.js"></script>
+</body>
+</html>

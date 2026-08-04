@@ -1,0 +1,212 @@
+/* Layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+      font-family: 'Segoe UI', sans-serif;
+      color: #1a1a2e;
+      display: flex;
+      min-height: 100vh;
+}
+/* Optional: Shift the whole dashboard when sidebar opens */
+#sidebar-container.active ~ .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition:all 0.3s ease;
+}
+.main-content {
+    margin-top: 40px; /* Pushes content down so the navbar doesn't cover it */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+
+/* Sidebar */
+/* 1. Set the default to hidden/thin line */
+/* 1. Main Logo Container */
+.brand {
+    display: flex;
+    align-items: center; /* Centers items vertically */
+    gap: 12px; /* Spaces out the icon mark and the name */
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+/* 2. The 'SC' Icon Block */
+.brand-mark {
+    display: flex;    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #3b82f6; /* Modern Blue Color */
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* 3. The 'SmartCare Clinic' Text */
+.brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #d6dde9; /* Dark Navy slate color */
+}
+
+.sidebar {
+    width: 0px; /* Fully closed */
+    /* If you want a thin 'line' visible, use width: 5px; */
+    background-color: #6d71e7;
+    color: white;
+    min-height: 100vh;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+    position: fixed; /* Keeps it on the side */
+    z-index: 100; /* Sidebar sits on top */
+}
+
+
+/* 2. Create the 'Open' state */
+.sidebar.active {
+    width: 250px;
+}
+
+/* 3. Ensure the button moves with the sidebar */
+.toggle-btn {
+    position: fixed;
+    top: 10px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size:x-large;
+    border-radius: 5px;
+    height: 35px;
+    left: 15px; /* Start near the edge */
+    transition: left 0.3s ease;
+    z-index: 101;  /* Button sits on top of sidebar */
+}
+
+/* Change this line in your CSS */
+#sidebar-container.active + .toggle-btn {
+    left: 260px; /* Moves the button when the container is active */
+}
+
+/* Also ensure your sidebar width responds to the container */
+#sidebar-container.active .sidebar h2{
+    margin-left: 20px;
+}
+
+
+/* Menu */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar ul li:hover {
+    background-color: #3b82f6;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 20px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+
+
+
+
+
+
+/* Topbar */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #6d71e7;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 99;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.topbar #comfort {
+    margin-left:45px;
+}
+/* 1. Target the Title/Text inside the Navbar */
+#sidebar-container.active ~ .topbar #comfort {
+    margin-left: 285px; /* Pushes 'The Comfort Zone' text */
+    transition: margin-left 0.3s ease;
+}
+
+.topbar i.menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.topbar span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.topbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Notifications */
+.notif-btn {
+    position: relative;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 2px 6px;
+}
+
+.user-pill .avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}

@@ -1,0 +1,15 @@
+K:\minior_project\backend\src\Core\SmartCare.Domain\bin\Debug\net10.0\SmartCare.Domain.deps.json
+K:\minior_project\backend\src\Core\SmartCare.Domain\bin\Debug\net10.0\SmartCare.Domain.dll
+K:\minior_project\backend\src\Core\SmartCare.Domain\bin\Debug\net10.0\SmartCare.Domain.pdb
+K:\minior_project\backend\src\Core\SmartCare.Domain\bin\Debug\net10.0\SmartCare.SharedKernel.dll
+K:\minior_project\backend\src\Core\SmartCare.Domain\bin\Debug\net10.0\SmartCare.SharedKernel.pdb
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.csproj.AssemblyReference.cache
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.GeneratedMSBuildEditorConfig.editorconfig
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.AssemblyInfoInputs.cache
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.AssemblyInfo.cs
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCar.6F90412A.Up2Date
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.dll
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\refint\SmartCare.Domain.dll
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.pdb
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\ref\SmartCare.Domain.dll

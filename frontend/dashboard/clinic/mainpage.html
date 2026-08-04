@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root { --bg: #f5fbff; --card: #fff; --primary: #1e88e5; --accent: #0b69c8; --muted: #6b7280; --radius: 12px; --shadow: 0 8px 24px rgba(13, 27, 62, 0.08)}
+        .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; margin-bottom: 16px}
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 16px }
+        .stat { padding: 18px; display: flex; flex-direction: column; gap: 8px }
+        .stat .label { color: var(--muted); font-weight: 700 }
+        .stat .value { font-size: 22px; font-weight: 800; color: var(--primary) }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+
+    <!-- Dashboard Overview -->
+     <h2>Dashboard</h2>
+    <section id="dashboard" class="view active">
+        <div class="stats-grid">
+            <div class="stat card">
+                <div class="label">Total Doctors</div>
+                <div class="value" id="total-doctors">0</div>
+            </div>
+            <div class="stat card">
+                <div class="label">Total Patients</div>
+                <div class="value" id="total-patients">0</div>
+            </div>
+            <div class="stat card">
+                <div class="label">Today's Appointments</div>
+                <div class="value" id="today-appointments">0</div>
+            </div>
+            <div class="stat card">
+                <div class="label">Available Doctors</div>
+                <div class="value" id="available-doctors">0</div>
+            </div>
+            <div class="stat card">
+                <div class="label">Busy Doctors</div>
+                <div class="value" id="busy-doctors">0</div>
+            </div>
+            <div class="stat card">
+                <div class="label">New Patients</div>
+                <div class="value" id="new-patients">0</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+
+
+    <script src="../../assets/js/sidePanel/clinic.js"></script>
+</body>
+</html>
