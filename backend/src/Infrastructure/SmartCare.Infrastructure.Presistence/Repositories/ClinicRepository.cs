@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-// ClinicRepository.cs
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SmartCare.Domain.Tenancy;
 
 namespace SmartCare.Infrastructure.Presistence.Repositories;
@@ -21,6 +16,8 @@ public class ClinicRepository : IClinicRepository
 
     public async Task AddAsync(Clinic clinic, CancellationToken ct = default) =>
         await _context.Clinics.AddAsync(clinic, ct);
+    public async Task<IReadOnlyList<Clinic>> GetAllAsync(CancellationToken ct = default) =>
+    await _context.Clinics.OrderByDescending(c => c.CreatedAtUtc).ToListAsync(ct);
 
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
 }

@@ -41,8 +41,8 @@ public class Clinic : AggregateRoot
 
     public void Approve()
     {
-        if (Status != ClinicStatus.Pending)
-            throw new InvalidOperationException($"Cannot approve a clinic in status '{Status}'.");
+        //if (Status != ClinicStatus.Pending)
+        //    throw new InvalidOperationException($"Cannot approve a clinic in status '{Status}'.");
 
         Status = ClinicStatus.Active;
         ApprovedAtUtc = DateTime.UtcNow;
@@ -50,9 +50,16 @@ public class Clinic : AggregateRoot
 
     public void Suspend()
     {
-        if (Status != ClinicStatus.Active)
-            throw new InvalidOperationException("Only an active clinic can be suspended.");
+        //if (Status != ClinicStatus.Active)
+        //    throw new InvalidOperationException("Only an active clinic can be suspended.");
 
         Status = ClinicStatus.Suspended;
+    }
+    public void Reactivate()
+    {
+        if (Status != ClinicStatus.Suspended)
+            throw new InvalidOperationException("Only a suspended clinic can be reactivated.");
+
+        Status = ClinicStatus.Active;
     }
 }

@@ -10,5 +10,7 @@ public interface IPatientProfileRepository
     Task<PatientProfile?> GetByIdAsync(Guid id, CancellationToken ct = default);
     Task AddAsync(PatientProfile profile, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
+    Task<IReadOnlyList<PatientProfile>> GetAllAsync(CancellationToken ct = default);
+
 }
 

@@ -7,4 +7,5 @@ public interface IClinicRepository
     Task<Clinic?> GetBySlugAsync(string slug, CancellationToken ct = default);
     Task AddAsync(Clinic clinic, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
+    Task<IReadOnlyList<Clinic>> GetAllAsync(CancellationToken ct = default);
 }
