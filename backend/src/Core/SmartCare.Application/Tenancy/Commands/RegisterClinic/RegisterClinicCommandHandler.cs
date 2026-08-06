@@ -28,29 +28,38 @@ public class RegisterClinicCommandHandler : IRequestHandler<RegisterClinicComman
 
     public async Task<Result<Guid>> Handle(RegisterClinicCommand request, CancellationToken ct)
     {
+        // 1. Validate Clinic Slug Uniqueness
         var existingSlug = await _clinicRepository.GetBySlugAsync(request.Slug, ct);
         if (existingSlug is not null)
             return Result<Guid>.Failure("A clinic with this slug already exists.");
 
-        var existingUser = await _userRepository.GetByEmailAsync(request.OwnerEmail, ct);
+        // 2. Validate Owner Email Uniqueness
+        var existingUser = await _userRepository.GetByEmailAsync(request.Email, ct);
         if (existingUser is not null)
             return Result<Guid>.Failure("An account with this email already exists.");
 
-        // 1. Login account for the clinic owner
+        // 3. Stage User Entity (Owner Account)
         var hash = _passwordHasher.Hash(request.OwnerPassword);
-        var user = User.Register(request.OwnerEmail, hash, request.OwnerFullName);
+        var user = User.Register(request.Email, hash, request.Name);
         await _userRepository.AddAsync(user, ct);
 
-        // 2. The clinic itself — Status = Pending until Super Admin approves
-        var clinic = Clinic.Register(request.Name, request.Slug, request.Email, request.Phone,
-            request.Address, request.City, request.State);
+        // 4. Stage Clinic Entity
+        var clinic = Clinic.Register(
+            request.Name,
+            request.Slug,
+            request.Email,
+            request.Phone,
+            request.Address,
+            request.City,
+            request.State);
         await _clinicRepository.AddAsync(clinic, ct);
-        await _clinicRepository.SaveChangesAsync(ct); // commit so clinic.Id exists for the UserRole below
 
-        // 3. Link the owner's account to the Clinic role + this specific clinic
+        // 5. Stage UserRole Entity
         var userRole = UserRole.Create(user.Id, SystemRoles.ClinicId, clinic.Id);
         await _userRoleRepository.AddAsync(userRole, ct);
-        await _userRoleRepository.SaveChangesAsync(ct);
+
+        // 6. SINGLE ATOMIC DATABASE SAVE
+        await _clinicRepository.SaveChangesAsync(ct);
 
         return Result<Guid>.Success(clinic.Id);
     }

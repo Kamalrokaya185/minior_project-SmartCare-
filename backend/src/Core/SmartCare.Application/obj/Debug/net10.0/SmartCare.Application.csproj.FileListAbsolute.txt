@@ -15,3 +15,4 @@ K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\Smart
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\refint\SmartCare.Application.dll
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.pdb
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\ref\SmartCare.Application.dll
+K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.sourcelink.json

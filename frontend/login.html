@@ -56,29 +56,6 @@
         </div>
     </footer>
 
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const form = document.querySelector('form');
-
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('open');
-            });       
-            document.querySelectorAll('.nav-links a').forEach((link) => {
-                link.addEventListener('click', () => navLinks.classList.remove('open'));
-            });
-        }        
-        document.querySelectorAll('[data-year]').forEach((el) => {
-            el.textContent = new Date().getFullYear();
-        });
-
-        if (form) {
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-                window.location.href = 'patient-dashboard.html';
-            });
-        }
-    </script>
+    <script src="assets/js/common.js"></script>
 </body>
 </html>

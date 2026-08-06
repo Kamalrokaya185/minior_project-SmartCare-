@@ -17,3 +17,4 @@ K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Payment\ob
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Payment\obj\Debug\net10.0\refint\SmartCare.Infrastructure.Payment.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Payment\obj\Debug\net10.0\SmartCare.Infrastructure.Payment.pdb
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Payment\obj\Debug\net10.0\ref\SmartCare.Infrastructure.Payment.dll
+K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Payment\obj\Debug\net10.0\SmartCare.Infrastructure.Payment.sourcelink.json

@@ -13,3 +13,4 @@ K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.
 K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\refint\SmartCare.Domain.dll
 K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.pdb
 K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\ref\SmartCare.Domain.dll
+K:\minior_project\backend\src\Core\SmartCare.Domain\obj\Debug\net10.0\SmartCare.Domain.sourcelink.json

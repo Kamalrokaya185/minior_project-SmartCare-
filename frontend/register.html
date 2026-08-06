@@ -26,30 +26,115 @@
 
     <main class="page-shell container">
         <div class="auth-card">
-            <h1>Create your account</h1>
-            <p class="inline-note">Join SmartCare as a patient, doctor, or administrator.</p>
-            <form>
-                <div class="form-row">
-                    <div>
-                        <label for="first-name">First name</label>
-                        <input id="first-name" type="text" placeholder="Ada" required />
-                    </div>
-                    <div>
-                        <label for="last-name">Last name</label>
-                        <input id="last-name" type="text" placeholder="Lovelace" required />
-                    </div>
-                </div>
+    <h1>Create your account</h1>
+    <p class="inline-note">Join SmartCare as a patient or clinic.</p>
+    
+    <!-- Register Type Switch -->
+    <div class="register-type-switch">
+        <button type="button" class="type-btn active" data-type="patient">
+            Patient
+        </button>
+        <button type="button" class="type-btn" data-type="clinic">
+            Clinic
+        </button>
+    </div>
 
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="name@example.com" required />
-
-                <label for="password">Password</label>
-                <input id="password" type="password" placeholder="Create a password" required />
-
-                <button class="btn btn-primary" type="submit">Register</button>
-                <p class="inline-note">Already have an account? <a href="login.html">Sign in</a>.</p>
-            </form>
+    <!-- PATIENT FORM (Visible by default) -->
+    <form id="patient-form">
+        <div class="form-row">
+            <div>
+                <label for="patient-first-name">Full name</label>
+                <input id="patient-full-name" type="text" placeholder="Ada" required />
+            </div>
+            <div>
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" >
+                  <option value="" disabled selected>-- Select gender --</option>
+                  <option value="male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="other">other</option>
+                </select>
+            </div>
+            <div>
+                <label for="patient-dob">DateOfBirth</label>
+                <input id="patient-dob" type="date" placeholder="00-00-0000" required />
+            </div>
+            <div>
+                <label for="patient-nid">NID</label>
+                <input id="patient-nid" type="number" placeholder="123456" required />
+            </div>
+            <div>
+                <label for="patient-emergency-phone">Emergency Contact Phone</label>
+                <input id="patient-emergency-phone" type="number" placeholder="980000000" required />
+            </div>
+            <div>
+                <label for="patient-emergency-name">Emergency Contact name</label>
+                <input id="patient-emergency-name" type="text" placeholder="Lovelace" required />
+            </div>
+            <div>
+                <label for="patient-emergency-relationship">Emergency Contact RelationShip</label>
+                <input id="patient-emergency-relationship" type="text" placeholder="Lovelace" required />
+            </div>
         </div>
+
+        <label for="patient-email">Email</label>
+        <input id="patient-email" type="email" placeholder="name@example.com" required />
+
+        <label for="patient-password">Password</label>
+        <input id="patient-password" type="password" placeholder="Create a password" required />
+
+        <button class="btn btn-primary" type="submit">Register as Patient</button>
+    </form>
+
+    <!-- CLINIC FORM (Hidden by default) -->
+    <form id="clinic-form" hidden>
+        <div class="form-row">
+            <div>
+                <label for="clinic-name">Clinic Name</label>
+                <input id="clinic-name" type="text" placeholder="City Health Clinic" required />
+            </div>
+            <div>
+                <label for="clinic-slug-name">Clinic-Slug Name</label>
+                <input id="clinic-slug-name" type="text" placeholder="City Health Clinic" required />
+            </div>
+            <div>
+                <label for="clinic-phone">Phone Number</label>
+                <input id="clinic-phone" type="tel" placeholder="+1 234 567 890" required />
+            </div>
+            <div>
+                <label for="clinic-addresh">Clinic Address</label>
+                <input id="clinic-addresh" type="text" placeholder="City Health Clinic" required />
+            </div>
+            <div>
+                <label for="clinic-city">Clinic city</label>
+                <input id="clinic-city" type="text" placeholder="City Health Clinic" required />
+            </div>
+            <div>
+                <label for="clinic-name">Clinic State</label>
+                <select id="state" name="state">
+                    <option value="" disabled selected>-- Select a Province --</option>
+                    <option value="koshi">Koshi Provision</option>
+                    <option value="madhesh">Madhesh Provision</option>
+                    <option value="Bagmati">Bagmati Provision</option>
+                    <option value="Gandaki">Gandaki Provision</option>
+                    <option value="lumbini">Lumbini Provision</option>
+                    <option value="karnali">Karnali Provision</option>
+                    <option value="sudurpashchim">Sudurpashchim Provision</option>
+                </select>
+            </div>
+        </div>
+
+        <label for="clinic-email">Clinic Email</label>
+        <input id="clinic-email" type="email" placeholder="contact@clinic.com" required />
+
+        <label for="clinic-password">Password</label>
+        <input id="clinic-password" type="password" placeholder="Create a password" required />
+
+        <button class="btn btn-primary" type="submit">Register Clinic</button>
+    </form>
+
+    <p class="inline-note" style="margin-top: 1.5rem;">Already have an account? <a href="login.html">Sign in</a>.</p>
+</div>
     </main>
 
     <footer class="footer">
@@ -58,22 +143,8 @@
         </div>
     </footer>
 
-    <script>
-        const navToggle = document.querySelector('.nav-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (navToggle && navLinks) {
-            navToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('open');
-            });       
-            document.querySelectorAll('.nav-links a').forEach((link) => {
-                link.addEventListener('click', () => navLinks.classList.remove('open'));
-            });
-        }        
-        document.querySelectorAll('[data-year]').forEach((el) => {
-            el.textContent = new Date().getFullYear();
-        });
-    </script>
+    <script src="assets/js/register.js"></script>
+    <script src="assets/js/common.js"></script>
 </body>
 
 </html>

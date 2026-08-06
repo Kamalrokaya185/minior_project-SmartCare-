@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using MediatR;
+﻿using MediatR;
 using SmartCare.Domain.Identity;
 using SmartCare.SharedKernel;
 

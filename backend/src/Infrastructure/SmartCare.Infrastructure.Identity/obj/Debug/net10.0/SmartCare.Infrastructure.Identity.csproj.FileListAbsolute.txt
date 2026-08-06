@@ -17,3 +17,4 @@ K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Identity\o
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Identity\obj\Debug\net10.0\refint\SmartCare.Infrastructure.Identity.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Identity\obj\Debug\net10.0\SmartCare.Infrastructure.Identity.pdb
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Identity\obj\Debug\net10.0\ref\SmartCare.Infrastructure.Identity.dll
+K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Identity\obj\Debug\net10.0\SmartCare.Infrastructure.Identity.sourcelink.json
