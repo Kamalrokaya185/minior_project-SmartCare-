@@ -93,12 +93,9 @@ async function changeClinicStatus(clinicId, actionName) {
 
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`${API_BASE_URL}/clinics/${clinicId}/status`, {
+        const response = await fetch(`${API_BASE_URL}/superadmin/clinics/${clinicId}/status`, {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token ? `Bearer ${token}` : ''
-            },
+            headers: authHeaders(),
             body: JSON.stringify({ action: actionName }) // Matches UpdateClinicStatusBody record
         });
 

@@ -27,4 +27,14 @@ public class ClinicRepository : IClinicRepository
         return (total, active, pending, suspended);
     }
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
+    public async Task<IReadOnlyList<Clinic>> SearchActiveAsync(string? searchTerm, CancellationToken ct = default)
+    {
+        var query = _context.Clinics.Where(c => c.Status == ClinicStatus.Active);
+
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+            query = query.Where(c => c.Name.Contains(searchTerm));
+
+        return await query.OrderBy(c => c.Name).ToListAsync(ct);
+    }
+
 }

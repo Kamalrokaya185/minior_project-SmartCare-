@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Book Appointment | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/patient/booking.css">
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+
+    <main class="main-content" id="main-content">
+        <h1>Book an Appointment</h1>
+
+        <div class="booking-steps">
+            <span class="step-indicator" data-step="1">1. Clinic</span>
+            <span class="step-indicator" data-step="2">2. Department</span>
+            <span class="step-indicator" data-step="3">3. Doctor</span>
+            <span class="step-indicator" data-step="4">4. Date</span>
+            <span class="step-indicator" data-step="5">5. Time</span>
+            <span class="step-indicator" data-step="6">6. Review</span>
+            <span class="step-indicator" data-step="7">7. Payment</span>
+        </div>
+
+        <!-- Step 1: Clinic -->
+        <section class="booking-panel" id="panel-1">
+            <h2>Select a Clinic</h2>
+            <input type="text" id="clinicSearch" placeholder="Search clinics..." />
+            <div class="card-grid" id="clinicList"></div>
+        </section>
+
+        <!-- Step 2: Department -->
+        <section class="booking-panel hidden" id="panel-2">
+            <h2>Select a Department</h2>
+            <div class="card-grid" id="departmentList"></div>
+            <button class="btn btn-add" data-back="1">← Back</button>
+        </section>
+
+        <!-- Step 3: Doctor -->
+        <section class="booking-panel hidden" id="panel-3">
+            <h2>Select a Doctor</h2>
+            <div class="card-grid" id="doctorList"></div>
+            <button class="btn btn-add" data-back="2">← Back</button>
+        </section>
+
+        <!-- Step 4: Date -->
+        <section class="booking-panel hidden" id="panel-4">
+            <h2>Select a Date</h2>
+            <div class="card-grid" id="dateList"></div>
+            <button class="btn btn-add" data-back="3">← Back</button>
+        </section>
+
+        <!-- Step 5: Time Slot -->
+        <section class="booking-panel hidden" id="panel-5">
+            <h2>Select a Time Slot</h2>
+            <div class="card-grid" id="slotList"></div>
+            <button class="btn btn-add" data-back="4">← Back</button>
+        </section>
+
+        <!-- Step 6: Review -->
+        <section class="booking-panel hidden" id="panel-6">
+            <h2>Review Your Appointment</h2>
+            <div id="reviewSummary" class="review-box"></div>
+            <label>
+                Notes (optional)
+                <textarea id="notesInput"></textarea>
+            </label>
+            <button class="btn btn-add" data-back="5">← Back</button>
+            <button class="btn btn-primary" id="confirmBookingBtn">Confirm Booking</button>
+        </section>
+
+        <!-- Step 7: Payment -->
+        <section class="booking-panel hidden" id="panel-7">
+            <h2>Payment</h2>
+            <div id="paymentInstructions" class="review-box"></div>
+            <label>
+                Payment Method
+                <select id="paymentMethod">
+                    <option value="eSewa">eSewa</option>
+                    <option value="Khalti">Khalti</option>
+                    <option value="BankTransfer">Bank Transfer</option>
+                    <option value="Cash">Cash</option>
+                </select>
+            </label>
+            <label>
+                Upload Payment Screenshot
+                <input type="file" id="proofFile" accept="image/*" />
+            </label>
+            <button class="btn btn-primary" id="submitProofBtn">Upload & Submit</button>
+            <div id="waitingMessage" class="hidden">
+                <p>Your payment proof has been submitted. Waiting for clinic verification.</p>
+                <a href="my-appointments.html" class="btn btn-add">Go to My Appointments</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../assets/js/components/patient.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/patient/booking.js"></script>
+</body>
+</html>

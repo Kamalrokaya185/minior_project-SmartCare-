@@ -1,0 +1,41 @@
+.booking-steps {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+.step-indicator {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.step-indicator.active {
+    background: #6366f1;
+    color: #fff;
+}
+.booking-panel.hidden { display: none; }
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.select-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    background: #fff;
+    transition: border-color 0.15s;
+}
+.select-card:hover { border-color: #6366f1; }
+.review-box {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+.hidden { display: none; }

@@ -9,4 +9,6 @@ public interface IClinicRepository
     Task SaveChangesAsync(CancellationToken ct = default);
     Task<IReadOnlyList<Clinic>> GetAllAsync(CancellationToken ct = default);
     Task<(int Total, int Active, int Pending, int Suspended)> GetStatusCountsAsync(CancellationToken ct = default);
+    Task<IReadOnlyList<Clinic>> SearchActiveAsync(string? searchTerm, CancellationToken ct = default);
+
 }
