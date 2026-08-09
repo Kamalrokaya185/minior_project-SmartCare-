@@ -305,14 +305,14 @@ async function openDetailModal(membershipId) {
         if (!response.ok) { alert("Could not load doctor details."); return; }
 
         const doc = await response.json();
-        modalBody.innerHTML = `
-            <p><strong>Full Name:</strong> ${escapeHtml(doc.fullName)}</p>
-            <p><strong>Specialization:</strong> ${escapeHtml(doc.specialization)}</p>
-            <p><strong>License Number:</strong> ${escapeHtml(doc.licenseNumber)}</p>
-            <p><strong>Gender:</strong> ${escapeHtml(doc.gender ?? "—")}</p>
-            <p><strong>Consultation Fee:</strong> ${doc.consultationFee ?? "—"}</p>
-            <p><strong>Status:</strong> ${doc.isActive ? "Active" : "Inactive"}</p>
-        `;
+        // modalBody.innerHTML = `
+        //     <p><strong>Full Name:</strong> ${escapeHtml(doc.fullName)}</p>
+        //     <p><strong>Specialization:</strong> ${escapeHtml(doc.specialization)}</p>
+        //     <p><strong>License Number:</strong> ${escapeHtml(doc.licenseNumber)}</p>
+        //     <p><strong>Gender:</strong> ${escapeHtml(doc.gender ?? "—")}</p>
+        //     <p><strong>Consultation Fee:</strong> ${doc.consultationFee ?? "—"}</p>
+        //     <p><strong>Status:</strong> ${doc.isActive ? "Active" : "Inactive"}</p>
+        // `;
 
         showModal(detailModal);
         await loadSchedules(membershipId);
@@ -342,18 +342,55 @@ async function loadSchedules(membershipId) {
         }
 
         scheduleBody.innerHTML = schedules.map((s) => `
-            <tr>
-                <td>${s.isRecurring ? "Recurring" : "One-time"}</td>
-                <td>${s.isRecurring ? DAY_NAMES[s.dayOfWeek] : s.specificDate}</td>
-                <td>${s.startTime} - ${s.endTime}</td>
-                <td>${s.slotDurationMinutes} min</td>
-                <td><span class="status-pill ${s.isActive ? "active" : "inactive"}">${s.isActive ? "Active" : "Inactive"}</span></td>
-                <td>
-                    <button class="btn btn-danger" data-action="toggle-schedule" data-schedule-id="${s.id}">
+            <tr style="border-bottom: 1px solid #e2e8f0; transition: background-color 0.15s ease;" onmouseover="this.style.backgroundColor='#f8fafc'" onmouseout="this.style.backgroundColor='transparent'">
+                <td style="padding: 10px 12px; font-size: 0.875rem; color: #334155; vertical-align: middle;">
+                    ${s.isRecurring ? "Recurring" : "One-time"}
+                </td>
+                <td style="padding: 10px 12px; font-size: 0.875rem; color: #0f172a; font-weight: 500; vertical-align: middle;">
+                    ${s.isRecurring ? DAY_NAMES[s.dayOfWeek] : s.specificDate}
+                </td>
+                <td style="padding: 10px 12px; font-size: 0.875rem; color: #334155; vertical-align: middle;">
+                    ${s.startTime} - ${s.endTime}
+                </td>
+                <td style="padding: 10px 12px; font-size: 0.875rem; color: #64748b; vertical-align: middle;">
+                    ${s.slotDurationMinutes} min
+                </td>
+                <td style="padding: 10px 12px; vertical-align: middle;">
+                    <span style="
+                        display: inline-block;
+                        padding: 3px 10px;
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                        border-radius: 9999px;
+                        background-color: ${s.isActive ? "#dcfce7" : "#fee2e2"};
+                        color: ${s.isActive ? "#15803d" : "#b91c1c"};
+                    ">
+                        ${s.isActive ? "Active" : "Inactive"}
+                    </span>
+                </td>
+                <td style="padding: 10px 12px; vertical-align: middle;">
+                    <button 
+                        data-action="toggle-schedule" 
+                        data-schedule-id="${s.id}"
+                        style="
+                            background-color: ${s.isActive ? "#ef4444" : "#10b981"};
+                            color: #ffffff;
+                            border: none;
+                            padding: 6px 12px;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            transition: background-color 0.15s ease;
+                        "
+                        onmouseover="this.style.backgroundColor='${s.isActive ? "#dc2626" : "#059669"}'"
+                        onmouseout="this.style.backgroundColor='${s.isActive ? "#ef4444" : "#10b981"}'"
+                    >
                         ${s.isActive ? "Deactivate" : "Reactivate"}
                     </button>
                 </td>
             </tr>
+
         `).join("");
     } catch (err) {
         console.error("Error loading schedules:", err);
@@ -409,7 +446,7 @@ async function createDoctor() {
         specialization: specializationInput.value.trim(),
         gender: genderInput.value || null,
         departmentId: departmentSelect.value || null,
-        consultationFee: null,
+        consultationFee: Number(consultationfeeInput.value) || null,
 
         isRecurring: hasSchedule ? (type === "recurring") : null,
         dayOfWeek: type === "recurring" ? Number(dayOfWeekInput.value) : null,
@@ -510,191 +547,3 @@ document.addEventListener("DOMContentLoaded", () => {
     requireRole("Clinic");
     loadDepartmentsAndDoctors();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     initModalEvents();
-//     fetchDepartments();
-// });
-
-
-// // 1. Fetch & Render Departments
-// async function fetchDepartments() {
-//     const tableBody = document.getElementById('deparmentTableBody');
-//     tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #94a3b8;">Loading departments...</td></tr>`;
-
-//     try {
-//         const token = getToken();
-//         const CURRENT_CLINIC_ID = localStorage.getItem("smartcare_profile_id");
-//         const response = await fetch(`${API_BASE_URL}/clinics/${CURRENT_CLINIC_ID}/departments`, {
-//             method: 'GET',
-//             headers: authHeaders()
-//         });
-
-//         console.log(response);
-//         if (!response.ok) {
-//             throw new Error(`Error ${response.status}: ${response.statusText}`);
-//         }
-
-//         const departments = await response.json();
-//         console.log(departments);
-//         renderDepartmentTable(departments);
-//     } catch (error) {
-//         console.error('Error fetching departments:', error);
-//         tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444;">Failed to load departments.</td></tr>`;
-//     }
-// }
-
-// // 2. Render Table Rows
-// function renderDepartmentTable(departments) {
-//     const tableBody = document.getElementById('deparmentTableBody');
-
-//     if (!departments || departments.length === 0) {
-//         tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #94a3b8;">No departments found.</td></tr>`;
-//         return;
-//     }
-
-//     tableBody.innerHTML = departments.map(dep => {
-//         const name = dep.name || dep.Name || '';
-//         const description = dep.description || dep.Description || 'N/A';
-//         const status = dep.isActive ?? dep.IsActive ?? true;
-//         const id = dep.id || dep.Id;
-
-//         return `
-//             <tr>
-//                 <td><strong>${escapeHtml(name)}</strong></td>
-//                 <td>${escapeHtml(description)}</td>
-//                 <td>
-//                     <span class="status-badge ${status ? 'status-approved' : 'status-suspend'}">
-//                         ${status ? 'Active' : 'Inactive'}
-//                     </span>
-//                 </td>
-//                 <td>
-//                     <button type="button" class="btn btn-secondary" onclick="viewDetails('${id}', '${escapeHtml(name)}', '${escapeHtml(description)}')">
-//                         <i class="fa-solid fa-eye"></i> View
-//                     </button>
-//                 </td>
-//             </tr>
-//         `;
-//     }).join('');
-// }
-
-// // 3. Handle Add Department Form Submission
-// const addForm = document.getElementById('addForm');
-// addForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-
-//     const nameInput = document.getElementById('departmentName');
-//     // Targets the input inside the #description container
-//     const descriptionInput = document.querySelector('#description input') || document.getElementById('description');
-
-//     const payload = {
-//         name: nameInput.value.trim(),
-//         description: descriptionInput.value.trim()
-//     };
-
-//     try {
-//         const token = getToken();
-//         const CURRENT_CLINIC_ID = localStorage.getItem("smartcare_profile_id");
-//         const response = await fetch(`${API_BASE_URL}/clinics/${CURRENT_CLINIC_ID}/departments`, {
-//             method: 'POST',
-//             headers: authHeaders(),
-//             body: JSON.stringify(payload)
-//         });
-
-//         if (response.ok) {
-//             alert('Department added successfully!');
-//             addForm.reset();
-//             closeModal('addModal');
-//             fetchDepartments(); // Refresh list
-//         } else {
-//             const errorText = await response.text();
-//             alert(`Failed to create department: ${errorText}`);
-//         }
-//     } catch (error) {
-//         console.error('Error creating department:', error);
-//         alert('Server error occurred while adding department.');
-//     }
-// });
-
-// // 4. Modal Event Controllers
-// function initModalEvents() {
-//     const addBtn = document.getElementById('addDepartmentBtn');
-//     if (addBtn) {
-//         addBtn.addEventListener('click', () => openModal('addModal'));
-//     }
-
-//     // Close buttons handler
-//     document.querySelectorAll('.modal-close, [data-close="add"]').forEach(btn => {
-//         btn.addEventListener('click', (e) => {
-//             const modal = e.target.closest('.modal');
-//             if (modal) closeModal(modal.id);
-//         });
-//     });
-// }
-
-// function openModal(modalId) {
-//     const modal = document.getElementById(modalId);
-//     if (modal) {
-//         modal.classList.remove('hidden');
-//         modal.setAttribute('aria-hidden', 'false');
-//     }
-// }
-
-// function closeModal(modalId) {
-//     const modal = document.getElementById(modalId);
-//     if (modal) {
-//         modal.classList.add('hidden');
-//         modal.setAttribute('aria-hidden', 'true');
-//     }
-// }
-
-// function viewDetails(id, name, description) {
-//     const modalBody = document.getElementById('modalBody');
-//     modalBody.innerHTML = `
-//         <p><strong>ID:</strong> ${id}</p>
-//         <p><strong>Name:</strong> ${name}</p>
-//         <p><strong>Description:</strong> ${description}</p>
-//     `;
-//     openModal('detailModal');
-// }
-
-// // Utility: XSS Protection
-// function escapeHtml(str) {
-//     if (!str) return '';
-//     return String(str)
-//         .replace(/&/g, '&amp;')
-//         .replace(/</g, '&lt;')
-//         .replace(/>/g, '&gt;')
-//         .replace(/"/g, '&quot;');
-// }

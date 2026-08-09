@@ -29,6 +29,7 @@ async function fetchPatients() {
         }
 
         const patients = await response.json();
+        console.log(patients);
         renderPatientTable(patients);
     } catch (error) {
         console.error('Error fetching patients:', error);
@@ -119,7 +120,6 @@ function viewPatientDetails(id, gender, dob, nid, contactName, relation, contact
             </h3>
             
             <div style="line-height: 1.8; color: #334155; font-size: 0.95rem;">
-                <p style="margin: 0.4rem 0;"><strong>Patient ID:</strong> <span style="font-size: 0.85rem; color: #64748b;">${id}</span></p>
                 <p style="margin: 0.4rem 0;"><strong>Gender:</strong> ${gender}</p>
                 <p style="margin: 0.4rem 0;"><strong>Date of Birth:</strong> ${dob}</p>
                 <p style="margin: 0.4rem 0;"><strong>National ID:</strong> ${nid}</p>

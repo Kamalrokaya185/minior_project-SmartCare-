@@ -14,6 +14,37 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Appointments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ClinicId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    PatientProfileId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DoctorId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DepartmentId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    ScheduleSlotId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    BookingDateUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    AppointmentDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    AppointmentTime = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    FeeAtBooking = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Notes = table.Column<string>(type: "TEXT", maxLength: 2000, nullable: true),
+                    CancelledAtUtc = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    CancellationReason = table.Column<string>(type: "TEXT", maxLength: 300, nullable: true),
+                    CreatedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PaymentStatus = table.Column<int>(type: "INTEGER", nullable: false),
+                    PaymentProofUrl = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
+                    PaymentMethod = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    PaymentVerifiedByUserId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    PaymentVerifiedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Appointments", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Clinic",
                 columns: table => new
                 {
@@ -41,16 +72,10 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
                     LicenseNumber = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    Qualification = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
-                    Specialization = table.Column<string>(type: "TEXT", maxLength: 150, nullable: true),
-                    ExperienceYear = table.Column<int>(type: "INTEGER", nullable: true),
+                    Specialization = table.Column<string>(type: "TEXT", maxLength: 150, nullable: false),
                     Gender = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
-                    Phone = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
-                    PhotoUrl = table.Column<string>(type: "TEXT", maxLength: 500, nullable: true),
-                    IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Biography = table.Column<string>(type: "TEXT", nullable: true),
                     CreatedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -87,6 +112,55 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AppointmentStatusHistory",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    AppointmentId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    FromStatus = table.Column<int>(type: "INTEGER", nullable: true),
+                    ToStatus = table.Column<int>(type: "INTEGER", nullable: false),
+                    ChangedByUserId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    Reason = table.Column<string>(type: "TEXT", maxLength: 300, nullable: true),
+                    ChangedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppointmentStatusHistory", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AppointmentStatusHistory_Appointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "Appointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RefundRequests",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    AppointmentId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    RequestedAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ApprovedAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Reason = table.Column<string>(type: "TEXT", maxLength: 300, nullable: true),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequestedByUserId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    ApprovedByUserId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    RequestedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ProcessedAtUtc = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RefundRequests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RefundRequests_Appointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "Appointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -303,6 +377,21 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Appointments_ClinicId_AppointmentDate_Status",
+                table: "Appointments",
+                columns: new[] { "ClinicId", "AppointmentDate", "Status" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Appointments_PatientProfileId",
+                table: "Appointments",
+                column: "PatientProfileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppointmentStatusHistory_AppointmentId_ChangedAtUtc",
+                table: "AppointmentStatusHistory",
+                columns: new[] { "AppointmentId", "ChangedAtUtc" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Clinic_Slug",
                 table: "Clinic",
                 column: "Slug",
@@ -336,9 +425,9 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_DoctorProfile_LicenseNumber",
+                name: "IX_DoctorProfile_LicenseNumber_Specialization",
                 table: "DoctorProfile",
-                column: "LicenseNumber",
+                columns: new[] { "LicenseNumber", "Specialization" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -358,6 +447,11 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                 table: "PatientProfiles",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RefundRequests_AppointmentId_Status",
+                table: "RefundRequests",
+                columns: new[] { "AppointmentId", "Status" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_Name",
@@ -403,16 +497,25 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AppointmentStatusHistory");
+
+            migrationBuilder.DropTable(
                 name: "ClinicPolicies");
 
             migrationBuilder.DropTable(
                 name: "PatientProfiles");
 
             migrationBuilder.DropTable(
+                name: "RefundRequests");
+
+            migrationBuilder.DropTable(
                 name: "ScheduleSlots");
 
             migrationBuilder.DropTable(
                 name: "UserRoles");
+
+            migrationBuilder.DropTable(
+                name: "Appointments");
 
             migrationBuilder.DropTable(
                 name: "DoctorSchedules");

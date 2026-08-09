@@ -1,35 +1,60 @@
+requireRole("Patient");
+
 // ===============================
-// Temporary Mock Data
-// Later replace this with fetch()
+// State (populated from the API)
 // ===============================
 
-const upcomingAppointment = {
-    doctorName: "Dr. Sharma",
-    specialization: "Cardiology",
-    clinicName: "City Health Clinic",
-    date: "Aug 15, 2026",
-    time: "10:30 AM",
-    status: "Confirmed",
-    appointmentId: "apt-001"
-};
+let upcomingAppointment = null;
+let recentAppointments = [];
 
-const recentAppointments = [
-    {
-        id: "apt-002",
-        date: "Aug 01, 2026",
-        doctor: "Dr. Rai",
-        clinic: "City Health Clinic",
-        status: "Completed"
-    },
-    {
-        id: "apt-003",
-        date: "Jul 20, 2026",
-        doctor: "Dr. Shah",
-        clinic: "ABC Clinic",
-        status: "Cancelled"
+const CANCELLABLE_STATUSES = ["Pending", "Confirmed", "CheckedIn"];
+const CLOSED_STATUSES = ["Completed", "Cancelled", "Rejected", "NoShow", "Expired"];
+
+function toDateTime(dateStr, timeStr) {
+    return new Date(`${dateStr}T${timeStr}`);
+}
+
+// ===============================
+// Load appointments from the API
+// ===============================
+
+async function loadDashboardData() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/appointments/mine`, { headers: authHeaders() });
+
+        if (!response.ok) {
+            console.error("Failed to load appointments:", response.status);
+            upcomingAppointment = null;
+            recentAppointments = [];
+            renderUpcomingAppointment();
+            renderRecentAppointments();
+            return;
+        }
+
+        const appointments = await response.json();
+
+        // Upcoming = soonest, non-past, still-relevant appointment
+        const now = new Date();
+        upcomingAppointment = appointments
+            .filter(a => CANCELLABLE_STATUSES.includes(a.status))
+            .filter(a => toDateTime(a.appointmentDate, a.appointmentTime) >= now)
+            .sort((a, b) => toDateTime(a.appointmentDate, a.appointmentTime) - toDateTime(b.appointmentDate, b.appointmentTime))[0]
+            ?? null;
+
+        // Recent = everything else, most recent first, excluding the one already shown as Upcoming
+        recentAppointments = appointments
+            .filter(a => !upcomingAppointment || a.appointmentId !== upcomingAppointment.appointmentId)
+            .sort((a, b) => toDateTime(b.appointmentDate, b.appointmentTime) - toDateTime(a.appointmentDate, a.appointmentTime));
+
+    } catch (err) {
+        console.error("Error loading dashboard data:", err);
+        upcomingAppointment = null;
+        recentAppointments = [];
     }
-];
 
+    renderUpcomingAppointment();
+    renderRecentAppointments();
+}
 
 // ===============================
 // Render Upcoming Appointment
@@ -42,7 +67,7 @@ function renderUpcomingAppointment() {
     if (!upcomingAppointment) {
         container.innerHTML = `
             <div class="empty-state">
-                No upcoming appointments.
+                No upcoming appointments. <a href="find-clinic.html">Book one now</a>.
             </div>
         `;
         return;
@@ -58,7 +83,7 @@ function renderUpcomingAppointment() {
                 <h3>${escapeHtml(appointment.doctorName)}</h3>
 
                 <p class="specialization">
-                    ${escapeHtml(appointment.specialization)}
+                    ${escapeHtml(appointment.specialization ?? "")}
                 </p>
 
                 <p class="clinic">
@@ -66,8 +91,8 @@ function renderUpcomingAppointment() {
                 </p>
 
                 <div class="appointment-time">
-                    <span>📅 ${escapeHtml(appointment.date)}</span>
-                    <span>🕐 ${escapeHtml(appointment.time)}</span>
+                    <span>📅 ${escapeHtml(appointment.appointmentDate)}</span>
+                    <span>🕐 ${escapeHtml(appointment.appointmentTime)}</span>
                 </div>
 
                 <div class="appointment-footer">
@@ -101,17 +126,17 @@ function renderQuickActions() {
 
     container.innerHTML = `
 
-        <a href="find-clinic.html" class="quick-action">
+        <a href="booking.html" class="quick-action">
             <span class="quick-icon">🏥</span>
             <span>Find Clinic</span>
         </a>
 
-        <a href="appointments.html" class="quick-action">
+        <a href="my-appointments.html" class="quick-action">
             <span class="quick-icon">📅</span>
             <span>My Appointments</span>
         </a>
 
-        <a href="profile.html" class="quick-action">
+        <a href="setting.html" class="quick-action">
             <span class="quick-icon">👤</span>
             <span>My Profile</span>
         </a>
@@ -161,11 +186,11 @@ function renderRecentAppointments() {
 
                         <tr>
 
-                            <td>${escapeHtml(appointment.date)}</td>
+                            <td>${escapeHtml(appointment.appointmentDate)}</td>
 
-                            <td>${escapeHtml(appointment.doctor)}</td>
+                            <td>${escapeHtml(appointment.doctorName)}</td>
 
-                            <td>${escapeHtml(appointment.clinic)}</td>
+                            <td>${escapeHtml(appointment.clinicName)}</td>
 
                             <td>
                                 <span class="status ${appointment.status.toLowerCase()}">
@@ -176,7 +201,7 @@ function renderRecentAppointments() {
                             <td>
                                 <button
                                     class="btn btn-small"
-                                    onclick="viewAppointment('${appointment.id}')">
+                                    onclick="viewAppointment('${appointment.appointmentId}')">
                                     View
                                 </button>
                             </td>
@@ -199,12 +224,7 @@ function renderRecentAppointments() {
 // ===============================
 
 function viewAppointment(id) {
-
-    console.log("View appointment:", id);
-
-    // Later:
-    // window.location.href =
-    //     `appointment-details.html?id=${id}`;
+    window.location.href = `my-appointments.html?id=${id}`;
 }
 
 
@@ -234,8 +254,7 @@ function escapeHtml(value) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    renderUpcomingAppointment();
     renderQuickActions();
-    renderRecentAppointments();
+    loadDashboardData(); // fetches real data, then renders Upcoming + Recent
 
 });

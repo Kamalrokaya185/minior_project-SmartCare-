@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartCare.Infrastructure.Payment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0de0ee6c0ec9e2169f5367d5820205f6c34e16e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6f84e18942d51fc8879230d81e8511bb949517f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartCare.Infrastructure.Payment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartCare.Infrastructure.Payment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

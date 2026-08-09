@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartCare.SharedKernel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+151cf77759cf50b0437e54d7a3259145a6d8fd1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6f84e18942d51fc8879230d81e8511bb949517f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartCare.SharedKernel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartCare.SharedKernel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
