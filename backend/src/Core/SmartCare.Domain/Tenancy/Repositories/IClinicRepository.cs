@@ -8,4 +8,5 @@ public interface IClinicRepository
     Task AddAsync(Clinic clinic, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
     Task<IReadOnlyList<Clinic>> GetAllAsync(CancellationToken ct = default);
+    Task<(int Total, int Active, int Pending, int Suspended)> GetStatusCountsAsync(CancellationToken ct = default);
 }

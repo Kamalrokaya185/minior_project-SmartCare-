@@ -12,14 +12,13 @@ public class CreateDoctorProfileCommandHandler : IRequestHandler<CreateDoctorPro
 
     public async Task<Result<Guid>> Handle(CreateDoctorProfileCommand request, CancellationToken ct)
     {
-        var existing = await _doctorProfileRepository.GetByLicenseNumberAsync(request.LicenseNumber, ct);
-        if (existing is not null)
-            return Result<Guid>.Failure("A doctor with this license number is already registered.");
+       // var existing = await _doctorProfileRepository.GetByLicenseNumberAsync(request.LicenseNumber, ct);
+        //if (existing is not null)
+        //    return Result<Guid>.Failure("A doctor with this license number is already registered.");
 
         var profile = DoctorProfile.Create(
-           request.FullName, request.LicenseNumber, request.Qualification, request.Specialization,
-           request.ExperienceYear, request.Gender, request.Phone, request.Email, request.PhotoUrl, request.Biography);
-
+           request.FullName, request.LicenseNumber, request.Specialization, request.Gender);
+        
         await _doctorProfileRepository.AddAsync(profile, ct);
         await _doctorProfileRepository.SaveChangesAsync(ct);
 

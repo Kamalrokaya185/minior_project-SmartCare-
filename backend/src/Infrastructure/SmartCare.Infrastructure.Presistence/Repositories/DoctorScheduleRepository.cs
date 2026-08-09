@@ -29,4 +29,13 @@ public class DoctorScheduleRepository : IDoctorScheduleRepository
         await _context.DoctorSchedules.AddAsync(schedule, ct);
 
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
+
+    public async Task<IReadOnlyList<DoctorSchedule>> GetAllByMembershipAsync(Guid clinicMembershipId, CancellationToken ct = default) =>
+    await _context.DoctorSchedules
+        .Where(s => s.ClinicMembershipId == clinicMembershipId)
+        .OrderBy(s => s.DayOfWeek).ThenBy(s => s.SpecificDate)
+        .ToListAsync(ct);
+    public Task<DoctorSchedule?> GetByIdAsync(Guid id, CancellationToken ct = default) =>
+    _context.DoctorSchedules.FirstOrDefaultAsync(s => s.Id == id, ct);
+
 }

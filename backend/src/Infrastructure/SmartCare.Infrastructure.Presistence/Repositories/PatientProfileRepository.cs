@@ -20,4 +20,15 @@ public class PatientProfileRepository : IPatientProfileRepository
     await _context.PatientProfiles.OrderByDescending(p => p.CreatedAtUtc).ToListAsync(ct);
 
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
+    public async Task<(int Total, int Active, int Inactive)> GetStatusCountsAsync(CancellationToken ct = default)
+    {
+        var query = from p in _context.PatientProfiles
+                    join u in _context.Users on p.UserId equals u.Id
+                    select u.IsActive;
+
+        var total = await query.CountAsync(ct);
+        var active = await query.CountAsync(isActive => isActive, ct);
+        var inactive = total - active;
+        return (total, active, inactive);
+    }
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/patient/appointmentHistory.css">
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar">
+          
+    </div>
+<main class="main-content" id="main-content">
+<!-- <h1>appointmentHistory</h1> -->
+ <!-- Header -->
+        <div class="page-header">
+            <div>
+                <h1>Appointment History</h1>
+                <p>View your previous appointments and consultation history.</p>
+            </div>
+            <a href="book-appointment.html" class="btn btn-primary">Book Appointment </a>
+        </div>
+
+        <!-- Filters -->
+        <section class="filter-card">
+            <input type="text" id="searchInput" placeholder="Search doctor or clinic...">
+            <select id="statusFilter">
+                <option value="all">All Status</option>
+                <option value="Completed">Completed</option>
+                <option value="Cancelled">Cancelled</option>
+                <option value="Expired">Expired</option>
+            </select>
+        </section>
+
+        <!-- Appointment History -->
+        <section class="history-card">
+            <div class="card-header">
+                <h2>Previous Appointments</h2>
+                <span id="appointmentCount">
+                    0 appointments
+                </span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Clinic</th>
+                            <th>Department</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentHistoryBody">
+                        <!-- JavaScript renders data here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Details Modal -->
+        <div id="detailModal"  class="modal hidden"  aria-hidden="true" >
+            <div class="modal-content">
+                <button  id="closeModal" class="modal-close" type="button">×</button>
+                <h2>Appointment Details</h2>
+                <div id="modalBody">
+                    <!-- JavaScript renders details -->
+                </div>
+            </div>
+        </div>
+
+</main>
+
+    <script src="../../assets/js/components/patient.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/patient/appointmentHistory.js"></script>
+</body>
+</html>

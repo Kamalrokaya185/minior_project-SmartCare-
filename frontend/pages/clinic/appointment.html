@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Appointments | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/clinic/doctor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .status-pill.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+
+    <main class="main-content" id="main-content">
+        <div class="page-heading-row">
+            <div>
+                <h1>Appointments</h1>
+                <p>View and filter appointments by date.</p>
+            </div>
+        </div>
+
+        <section class="card table-card">
+            <div class="table-header">
+                <h2 id="listTitle">Today's Appointments</h2>
+                <div class="table-header-actions">
+                    <input type="date" id="dateFilter" />
+                    <button class="btn btn-primary" id="todayBtn" type="button">Today</button>
+                </div>
+            </div>
+            <div class="table-wrapper-approve">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Specialization</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Payment</th>
+                            <th>Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsBody">
+                        <tr><td colspan="7" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../assets/js/components/clinic.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/clinic/appointments.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | SmartCare</title>
+   <link rel="stylesheet" href="appointment.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+
+<body class="page-admin">
+    <header>
+        <div class="container navbar">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">SC</span>
+                <span>SmartCare</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="appointment.html">Reports</a>
+                <a href="queue.html">Queue</a>
+                <a href="login.html">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container dashboard-shell">
+        <aside class="sidebar">
+            <h3>Admin Center</h3>
+            <ul>
+                <li><a href="admin-dashboard.html">Overview</a></li>
+
+                <li><a href="contact.html">Support</a></li>
+            </ul>
+        </aside>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© <span data-year></span> SmartCare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        const searchInput = document.getElementById('appointmentSearch');
+        const rows = Array.from(document.querySelectorAll('#appointmentTableBody tr'));
+
+        searchInput.addEventListener('input', function () {
+            const query = this.value.toLowerCase().trim();
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+
+        document.querySelectorAll('.action-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const row = this.closest('tr');
+                const patient = row.children[1].textContent;
+                const action = this.textContent;
+                alert(`${action} action triggered for ${patient}`);
+            });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                this.closest('tr').remove();
+            });
+        });</script>
+     <script src="../../assets/js/sidePanel/clinic.js"></script>
+</body>
+
+</html> -->

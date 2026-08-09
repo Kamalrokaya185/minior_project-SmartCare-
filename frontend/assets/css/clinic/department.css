@@ -1,0 +1,246 @@
+
+/* Table Management Header Container */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff;
+}
+
+.table-header h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #0f172a;
+}
+
+.table-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.table-summary {
+    font-size: 13px;
+    color: #64748b;
+    background-color: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* Form Action Buttons Configuration */
+.btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-primary {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0369a1;
+}
+
+.btn-add {
+    background-color: #f1f5f9;
+    color: #475569;
+    border-color: #e2e8f0;
+}
+
+.btn-add:hover {
+    background-color: #e2e8f0;
+}
+
+/* Responsive Table Wrapper Layout */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+}
+
+td {
+    padding: 14px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* Modals Core Overlay Architecture */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.4); /* Backdrop blur feel */
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modal.hidden {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Inner Modal View Window Box */
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 550px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #475569;
+}
+
+.modal h3 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    color: #0f172a;
+}
+
+/* Two-Column Matrix Form Layout Elements */
+/* .doctor-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 16px;
+} */
+
+/* Break specific longer areas to full rows */
+.doctor-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #475569;
+}
+
+.doctor-form label:has(textarea),
+.doctor-form label:has(#biography),
+.doctor-form .form-actions {
+    grid-column: span 2;
+}
+
+/* Standard Inputs & Text Area Blocks styling */
+.doctor-form input,
+.doctor-form select,
+.doctor-form textarea {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.doctor-form input:focus,
+.doctor-form select:focus,
+.doctor-form textarea:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+/* Bottom Action Layout Control block */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.page-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.status-pill {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-pill.active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-pill.inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+.schedule-fieldset {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+.schedule-fieldset legend {
+    font-weight: 600;
+    padding: 0 0.5rem;
+}
+.modal-wide .modal-content {
+    max-width: 700px;
+}

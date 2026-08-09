@@ -12,9 +12,9 @@ K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notificati
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.AssemblyInfoInputs.cache
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.AssemblyInfo.cs
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.sourcelink.json
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCar.24FFB148.Up2Date
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\refint\SmartCare.Infrastructure.Notifications.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.pdb
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\ref\SmartCare.Infrastructure.Notifications.dll
-K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Notifications\obj\Debug\net10.0\SmartCare.Infrastructure.Notifications.sourcelink.json

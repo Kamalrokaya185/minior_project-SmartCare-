@@ -1,0 +1,596 @@
+               <!-- ==========================================
+             UPCOMING APPOINTMENT
+        =========================================== -->
+        <section class="dashboard-section">
+            <div class="section-header">
+                <div>
+                    <h2>Upcoming Appointment</h2>
+                    <p>Your next scheduled appointment</p>
+                </div>
+                <a href="book-appointment.html" class="btn btn-primary">+ Book Appointment</a>
+            </div>
+            <div class="appointment-card">
+                <div class="appointment-info">
+                    <div class="doctor-avatar">DS</div>
+                    <div class="doctor-information">
+                        <h3>Dr. Sharma</h3>
+                        <p class="specialization">Cardiology</p>
+                        <p class="clinic-name">City Health Clinic</p>
+                    </div>
+                </div>
+                <div class="appointment-details">
+                    <div class="appointment-date">
+                        <span class="detail-icon">📅</span>
+                        <div>
+                            <span class="detail-label">Date</span>
+                            <strong>Aug 15, 2026</strong>
+                        </div>
+                    </div>
+                    <div class="appointment-time">
+                        <span class="detail-icon">🕐</span>
+                        <div>
+                            <span class="detail-label">Time</span>
+                            <strong>10:30 AM</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="appointment-status">
+                    <span class="status confirmed">Confirmed</span>
+                    <a href="appointment-details.html" class="btn btn-outline">View Details</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             QUICK ACTIONS
+        =========================================== -->
+        <section class="dashboard-section">
+            <div class="section-header">
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Access frequently used features</p>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <!-- Find Clinic -->
+                <a href="clinics.html" class="quick-action-card">
+                    <div class="quick-action-icon">🏥</div>
+                    <div>
+                        <h3>Find Clinic</h3>
+                        <p>Find hospitals and clinics</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <!-- My Appointments -->
+                <a href="appointments.html" class="quick-action-card">
+                    <div class="quick-action-icon">📅</div>
+                    <div>
+                        <h3>My Appointments</h3>
+                        <p>View your appointments</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <!-- My Profile -->
+                <a href="profile.html" class="quick-action-card">
+                    <div class="quick-action-icon">👤</div>
+                    <div>
+                        <h3>My Profile</h3>
+                        <p>Manage your account</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             RECENT APPOINTMENTS
+        =========================================== -->
+        <section class="dashboard-section">
+            <div class="section-header">
+                <div>
+                    <h2>Recent Appointments</h2>
+                    <p>Your recent appointment history</p>
+                </div>
+                <a href="appointments.html" class="view-all">View All</a>
+            </div>
+            <div class="table-wrapper">
+                <table class="appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Doctor</th>
+                            <th>Clinic</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentTableBody">
+                        loading.....
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+
+
+
+<!-- // appointment -->
+        <!-- Page Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>Book an Appointment</h1>
+
+                <p>
+                    Find a clinic, choose a doctor and select an available time.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Progress -->
+        <div class="booking-progress">
+
+            <div class="progress-step active">
+                <span>1</span>
+                <p>Clinic</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <span>2</span>
+                <p>Department</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <span>3</span>
+                <p>Doctor</p>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <span>4</span>
+                <p>Date & Time</p>
+            </div>
+
+        </div>
+
+        <!-- =====================================
+             STEP 1 — CLINIC
+        ====================================== -->
+        <section class="booking-section" id="clinicStep">
+
+            <div class="section-title">
+
+                <h2>Select Clinic</h2>
+
+                <p>
+                    Choose the clinic where you want to visit.
+                </p>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="search-box">
+
+                <span>🔍</span>
+
+                <input
+                    type="search"
+                    id="clinicSearch"
+                    placeholder="Search clinic..."
+                >
+
+            </div>
+
+
+            <!-- Clinics -->
+
+            <div class="clinic-list" id="clinicList">
+
+                <div class="clinic-card">
+
+                    <div class="clinic-icon">
+                        🏥
+                    </div>
+
+                    <div class="clinic-info">
+
+                        <h3>City Health Clinic</h3>
+
+                        <p>Kathmandu</p>
+
+                        <span class="open-status">
+                            Open
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary select-clinic"
+                        data-id="1">
+
+                        Select Clinic
+
+                    </button>
+
+                </div>
+
+
+                <div class="clinic-card">
+
+                    <div class="clinic-icon">
+                        🏥
+                    </div>
+
+                    <div class="clinic-info">
+
+                        <h3>ABC Medical Center</h3>
+
+                        <p>Pokhara</p>
+
+                        <span class="open-status">
+                            Open
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary select-clinic"
+                        data-id="2">
+
+                        Select Clinic
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             STEP 2 — DEPARTMENT
+        ====================================== -->
+        <section
+            class="booking-section hidden"
+            id="departmentStep">
+
+            <div class="selected-info">
+
+                <strong>Selected Clinic:</strong>
+
+                <span id="selectedClinicName">
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <h2>Select Department</h2>
+
+                <p>
+                    Choose the department you want to visit.
+                </p>
+
+            </div>
+
+
+            <div
+                class="department-grid"
+                id="departmentList">
+
+                <button
+                    class="department-card"
+                    data-id="1">
+
+                    <span class="department-icon">
+                        🫀
+                    </span>
+
+                    <strong>
+                        Cardiology
+                    </strong>
+
+                </button>
+
+
+                <button
+                    class="department-card"
+                    data-id="2">
+
+                    <span class="department-icon">
+                        🦷
+                    </span>
+
+                    <strong>
+                        Dental
+                    </strong>
+
+                </button>
+
+
+                <button
+                    class="department-card"
+                    data-id="3">
+
+                    <span class="department-icon">
+                        👁️
+                    </span>
+
+                    <strong>
+                        Ophthalmology
+                    </strong>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             STEP 3 — DOCTOR
+        ====================================== -->
+        <section
+            class="booking-section hidden"
+            id="doctorStep">
+
+            <div class="selected-info">
+
+                <strong>Department:</strong>
+
+                <span id="selectedDepartmentName">
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <h2>Select Doctor</h2>
+
+                <p>
+                    Choose the doctor you want to consult.
+                </p>
+
+            </div>
+
+
+            <div
+                class="doctor-list"
+                id="doctorList">
+
+                <div class="doctor-card">
+
+                    <div class="doctor-avatar">
+                        DS
+                    </div>
+
+                    <div class="doctor-info">
+
+                        <h3>Dr. Sharma</h3>
+
+                        <p>
+                            Cardiology
+                        </p>
+
+                        <small>
+                            Consultation Fee: Rs. 500
+                        </small>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary select-doctor"
+                        data-id="1">
+
+                        Select Doctor
+
+                    </button>
+
+                </div>
+
+
+                <div class="doctor-card">
+
+                    <div class="doctor-avatar">
+                        DR
+                    </div>
+
+                    <div class="doctor-info">
+
+                        <h3>Dr. Rai</h3>
+
+                        <p>
+                            Cardiology
+                        </p>
+
+                        <small>
+                            Consultation Fee: Rs. 600
+                        </small>
+
+                    </div>
+
+                    <button
+                        class="btn btn-primary select-doctor"
+                        data-id="2">
+
+                        Select Doctor
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             STEP 4 — DATE & TIME
+        ====================================== -->
+        <section
+            class="booking-section hidden"
+            id="slotStep">
+
+            <div class="selected-info">
+
+                <strong>Doctor:</strong>
+
+                <span id="selectedDoctorName">
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <h2>Select Date & Time</h2>
+
+                <p>
+                    Choose an available appointment slot.
+                </p>
+
+            </div>
+
+
+            <!-- Date -->
+
+            <label class="input-label">
+                Select Date
+            </label>
+
+            <input
+                type="date"
+                id="appointmentDate"
+                class="date-input"
+            >
+
+
+            <!-- Slots -->
+
+            <div class="slot-area">
+
+                <h3>
+                    Available Time
+                </h3>
+
+                <div
+                    class="slot-grid"
+                    id="slotList">
+
+                    <button class="slot">
+                        09:00 AM
+                    </button>
+
+                    <button class="slot">
+                        09:30 AM
+                    </button>
+
+                    <button class="slot">
+                        10:00 AM
+                    </button>
+
+                    <button class="slot">
+                        10:30 AM
+                    </button>
+
+                    <button class="slot">
+                        11:00 AM
+                    </button>
+
+                    <button class="slot">
+                        11:30 AM
+                    </button>
+
+                    <button class="slot">
+                        02:00 PM
+                    </button>
+
+                    <button class="slot">
+                        02:30 PM
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================
+             APPOINTMENT SUMMARY
+        ====================================== -->
+        <section
+            class="booking-section hidden"
+            id="summaryStep">
+
+            <div class="section-title">
+
+                <h2>Appointment Summary</h2>
+
+                <p>
+                    Check your appointment details before continuing.
+                </p>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-row">
+                    <span>Clinic</span>
+                    <strong id="summaryClinic">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Department</span>
+                    <strong id="summaryDepartment">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Doctor</span>
+                    <strong id="summaryDoctor">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Date</span>
+                    <strong id="summaryDate">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Time</span>
+                    <strong id="summaryTime">—</strong>
+                </div>
+
+                <div class="summary-row total">
+                    <span>Consultation Fee</span>
+                    <strong id="summaryFee">
+                        Rs. 0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <button
+                id="continueBookingBtn"
+                class="btn btn-primary continue-btn">
+
+                Continue to Booking
+
+            </button>
+
+        </section>

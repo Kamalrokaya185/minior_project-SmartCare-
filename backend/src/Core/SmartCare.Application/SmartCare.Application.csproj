@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+    <Compile Remove="Tenancy\Commands\AddClinicMembership\**" />
     <Compile Remove="Tenancy\Commands\ApproveClinic\**" />
     <EmbeddedResource Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+    <EmbeddedResource Remove="Tenancy\Commands\AddClinicMembership\**" />
     <EmbeddedResource Remove="Tenancy\Commands\ApproveClinic\**" />
     <None Remove="ClinicalDirectory\Commands\RegisterDoctorForClinic\**" />
+    <None Remove="Tenancy\Commands\AddClinicMembership\**" />
     <None Remove="Tenancy\Commands\ApproveClinic\**" />
   </ItemGroup>
 

@@ -61,6 +61,7 @@ public class DoctorSchedule : AggregateRoot
         if (slotDurationMinutes <= 0) throw new ArgumentException("SlotDurationMinutes must be positive.");
     }
 
+    public void Reactivate() => IsActive = true;
     public void Deactivate() => IsActive = false;
 
     /// <summary>Generates the raw candidate time slices for this schedule, with no knowledge of what's already taken.</summary>

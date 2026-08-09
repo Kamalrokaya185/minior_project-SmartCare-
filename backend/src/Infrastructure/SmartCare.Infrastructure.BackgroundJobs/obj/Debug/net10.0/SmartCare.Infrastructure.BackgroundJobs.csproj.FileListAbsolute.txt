@@ -12,9 +12,9 @@ K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Background
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.AssemblyInfoInputs.cache
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.AssemblyInfo.cs
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.sourcelink.json
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCar.FD51DB3F.Up2Date
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\refint\SmartCare.Infrastructure.BackgroundJobs.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.pdb
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\ref\SmartCare.Infrastructure.BackgroundJobs.dll
-K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.BackgroundJobs\obj\Debug\net10.0\SmartCare.Infrastructure.BackgroundJobs.sourcelink.json

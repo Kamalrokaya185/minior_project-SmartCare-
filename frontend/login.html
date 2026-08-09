@@ -27,24 +27,18 @@
         <div class="auth-card">
             <h1>Welcome back</h1>
             <p class="inline-note">Access your patient, doctor, or admin dashboard securely.</p>
-            <form>
+            <button><a href="pages/patient/dashboard.html">patien page</a></button>
+            <form id="loginForm">
                 <label for="email">Email address</label>
                 <input id="email" type="email" placeholder="you@example.com" required />
 
                 <label for="password">Password</label>
                 <input id="password" type="password" placeholder="Enter password" required />
 
-                <button class="btn btn-primary" type="submit">Log in
-                    
-                </button>
-                <!-- Instead of a plain submit button, use a selection driver -->
-                    <label>Submit & Go To: </label>
-                    <select onchange="if(this.value) window.location.href = this.value;">
-                        <option value="">-- Choose Destination --</option>
-                        <option value="dashboard/clinic/mainpage.html">Clinic page</option>
-                        <option value="dashboard/super_admin/super_admin.html">superAdmin page</option>
-                        <option value="patient-dashboard.html">Patient Page</option>
-                    </select>
+                <p id="errorMessage" class="form-error" hidden></p>
+
+                <button class="btn btn-primary" type="submit">Log in</button>
+
                 <p class="inline-note">New here? <a href="register.html">Create an account</a>.</p>
             </form>
         </div>
@@ -56,6 +50,8 @@
         </div>
     </footer>
 
-    <script src="assets/js/common.js"></script>
+    <!-- <script src="assets/js/common.js"></script> -->
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/login.js"></script>
 </body>
 </html>

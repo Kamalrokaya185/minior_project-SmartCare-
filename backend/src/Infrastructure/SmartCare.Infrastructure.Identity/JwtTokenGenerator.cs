@@ -4,27 +4,22 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SmartCare.Application.Common.Interfaces;
-using SmartCare.Domain.Identity;
 
 namespace SmartCare.Infrastructure.Identity;
 
 public class JwtTokenGenerator : ITokenGenerator
 {
     private readonly IConfiguration _config;
+    public JwtTokenGenerator(IConfiguration config) => _config = config;
 
-    public JwtTokenGenerator(IConfiguration config)
-    {
-        _config = config;
-    }
-
-    public string GenerateAccessToken(User user, IEnumerable<string> roles)
+    public string GenerateAccessToken(Guid userId, string email, IEnumerable<string> roles)
     {
         var claims = new List<Claim>
         {
-            new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new(ClaimTypes.Email, user.Email)
+            new(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new(ClaimTypes.NameIdentifier, userId.ToString()),
+            new(ClaimTypes.Email, email)
         };
-
         claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Secret"]!));

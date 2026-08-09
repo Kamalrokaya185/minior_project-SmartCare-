@@ -18,7 +18,12 @@ public class UserRoleRepository : IUserRoleRepository
                       where ur.UserId == userId
                       select r.Name).ToListAsync(ct);
     }
-
+    public async Task<Guid?> GetProfileIdNamesForUserAsync(Guid userId, CancellationToken ct = default)
+    {
+        return await (from ur in _context.UserRoles
+                      where ur.UserId == userId
+                      select ur.ProfileId).FirstOrDefaultAsync(ct);
+    }
     public async Task AddAsync(UserRole userRole, CancellationToken ct = default) =>
         await _context.UserRoles.AddAsync(userRole, ct);
 

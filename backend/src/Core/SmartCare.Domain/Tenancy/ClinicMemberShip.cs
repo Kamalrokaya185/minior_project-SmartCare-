@@ -14,7 +14,7 @@ public class ClinicMembership : AggregateRoot
 
     private ClinicMembership() { }
 
-    public static ClinicMembership Create(Guid clinicId, Guid doctorId, 
+    public static ClinicMembership Create(Guid clinicId, Guid doctorId,
         Guid? departmentId = null, decimal? consultationFee = null)
     {
         if (consultationFee is < 0)
@@ -29,9 +29,25 @@ public class ClinicMembership : AggregateRoot
         };
     }
 
+    public void UpdateDetails(Guid? departmentId, decimal? consultationFee)
+    {
+        if (consultationFee is < 0)
+            throw new ArgumentException("Consultation fee cannot be negative.");
+
+        DepartmentId = departmentId;
+        ConsultationFee = consultationFee;
+    }
+
     public void Deactivate()
     {
         IsActive = false;
         LeftAtUtc = DateTime.UtcNow;
     }
+
+    public void Reactivate()
+    {
+        IsActive = true;
+        LeftAtUtc = null;
+    }
 }
+

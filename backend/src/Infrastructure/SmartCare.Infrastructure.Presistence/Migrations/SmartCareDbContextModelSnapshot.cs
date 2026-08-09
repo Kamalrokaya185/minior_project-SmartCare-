@@ -175,18 +175,8 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Biography")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("TEXT");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("ExperienceYear")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -197,33 +187,19 @@ namespace SmartCare.Infrastructure.Presistence.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("LicenseNumber")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Phone")
-                        .HasMaxLength(20)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PhotoUrl")
-                        .HasMaxLength(500)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Qualification")
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Specialization")
+                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LicenseNumber")
+                    b.HasIndex("LicenseNumber", "Specialization")
                         .IsUnique();
 
                     b.ToTable("DoctorProfile", (string)null);

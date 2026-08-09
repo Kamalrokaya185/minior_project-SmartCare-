@@ -12,12 +12,10 @@ public class DoctorProfileConfiguration : IEntityTypeConfiguration<DoctorProfile
         b.HasKey(d => d.Id);
         b.Property(d => d.FullName).IsRequired().HasMaxLength(200);
         b.Property(d => d.LicenseNumber).IsRequired().HasMaxLength(100);
-        b.HasIndex(d => d.LicenseNumber).IsUnique();
-        b.Property(d => d.Qualification).HasMaxLength(255);
-        b.Property(d => d.Specialization).HasMaxLength(150);
+        b.Property(d => d.Specialization).IsRequired().HasMaxLength(150);
         b.Property(d => d.Gender).HasMaxLength(20);
-        b.Property(d => d.Phone).HasMaxLength(20);
-        b.Property(d => d.Email).HasMaxLength(255);
-        b.Property(d => d.PhotoUrl).HasMaxLength(500);
+
+        // The actual fix: License + Specialization together must be unique, not License alone.
+        b.HasIndex(d => new { d.LicenseNumber, d.Specialization }).IsUnique();
     }
 }

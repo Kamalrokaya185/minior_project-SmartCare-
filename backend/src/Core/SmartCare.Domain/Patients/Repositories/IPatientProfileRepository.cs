@@ -11,6 +11,7 @@ public interface IPatientProfileRepository
     Task AddAsync(PatientProfile profile, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
     Task<IReadOnlyList<PatientProfile>> GetAllAsync(CancellationToken ct = default);
+    Task<(int Total, int Active, int Inactive)> GetStatusCountsAsync(CancellationToken ct = default);
 
 }
 

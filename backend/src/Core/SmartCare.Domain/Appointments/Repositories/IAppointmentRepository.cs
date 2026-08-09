@@ -7,4 +7,6 @@ public interface IAppointmentRepository
     Task<IReadOnlyList<Appointment>> GetPendingAwaitingVerificationAsync(Guid clinicId, CancellationToken ct = default);
     Task AddAsync(Appointment appointment, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
+    Task<IReadOnlyList<Appointment>> GetByClinicAndDateAsync(Guid clinicId, DateOnly date, CancellationToken ct = default);
+
 }

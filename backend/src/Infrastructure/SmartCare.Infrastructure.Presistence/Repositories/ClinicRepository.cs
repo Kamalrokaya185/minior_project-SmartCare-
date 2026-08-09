@@ -18,6 +18,13 @@ public class ClinicRepository : IClinicRepository
         await _context.Clinics.AddAsync(clinic, ct);
     public async Task<IReadOnlyList<Clinic>> GetAllAsync(CancellationToken ct = default) =>
     await _context.Clinics.OrderByDescending(c => c.CreatedAtUtc).ToListAsync(ct);
-
+    public async Task<(int Total, int Active, int Pending, int Suspended)> GetStatusCountsAsync(CancellationToken ct = default)
+    {
+        var total = await _context.Clinics.CountAsync(ct);
+        var active = await _context.Clinics.CountAsync(c => c.Status == ClinicStatus.Active, ct);
+        var pending = await _context.Clinics.CountAsync(c => c.Status == ClinicStatus.Pending, ct);
+        var suspended = await _context.Clinics.CountAsync(c => c.Status == ClinicStatus.Suspended, ct);
+        return (total, active, pending, suspended);
+    }
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
 }

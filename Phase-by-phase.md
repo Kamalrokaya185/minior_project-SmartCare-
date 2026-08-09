@@ -142,17 +142,11 @@
 
 *CREATE TABLE DoctorProfile*
 1. Id	CHAR(36)	Unique Primary Key.
-2. LicenseNumber	VARCHAR(100)	Government-issued medical licence number.
-3. Qualification	VARCHAR(255)	Medical qualifications (MBBS, MD, etc.).
+2. Fullname 
+3. LicenseNumber	VARCHAR(100)	Government-issued medical licence number.
 4. Specialization	VARCHAR(150)	Doctor's specialty.
-5. ExperienceYear	INT	Total years of medical experience.
-6. Gender VARCHAR(20)
-7. Phone VARCHAR(20)
-8. Email VARCHAR(255) NULL
-9. PhotoUrl VARCHAR(500)
-10. IsActive  TINYINT(1)
-11. Biography	TEXT	Professional introduction shown to patients.
-12. CreatedAtUtc	DATETIME	Doctor profile creation date.
+5. Gender VARCHAR(20)
+6. CreatedAtUtc	DATETIME	Doctor profile creation date.
 
 
 

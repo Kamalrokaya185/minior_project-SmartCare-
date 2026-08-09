@@ -12,20 +12,6 @@ if (navToggle && navLinks) {
     });
 }
 
-// // Update copyright year
-// document.querySelectorAll('[data-year]').forEach((el) => {
-//     el.textContent = new Date().getFullYear();
-// });
-
-// // === Login Page Logic ===
-// const form = document.querySelector('form');
-
-// if (form) {
-//     form.addEventListener('submit', (event) => {
-//         event.preventDefault();
-//         window.location.href = 'patient-dashboard.html';
-//     });
-// }
 
 // Javascript for register page
 const patientBtn = document.querySelector('[data-type="patient"]');

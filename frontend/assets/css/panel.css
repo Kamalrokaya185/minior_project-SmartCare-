@@ -1,0 +1,216 @@
+/* --- Global Kids Theme Resets --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #fff9e6; 
+  color: #4a4a4a;
+  overflow-x: hidden;
+}
+
+/* --- Layout Base States (DEFAULT CLOSED) --- */
+
+/* Sidebar - Positioned completely off-screen to the left by default */
+.sidebar {
+  position: fixed;
+  top: 15px;
+  left: -280px; /* Completely hidden out of view */
+  width: 250px;
+  height: calc(100vh - 30px);
+  background: #6c5ce7; 
+  color: #fff;
+  padding: 25px 0;
+  z-index: 100;
+  border-radius: 24px;
+  box-shadow: 0 10px 0px #5142c3, 0 20px 25px rgba(108, 92, 231, 0.3); 
+  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid #ffffff;
+}
+
+/* Topbar - Fully expanded side-to-side by default */
+.topbar {
+  position: fixed;
+  top: 15px;
+  left: 20px; /* Left edge aligned nicely away from the screen edge */
+  right: 20px; /* Right edge matches perfectly */
+  height: 70px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px 0 80px; /* Extra padding left for the floating menu button */
+  border-radius: 20px; 
+  box-shadow: 0 8px 0px #e6e6e6, 0 15px 20px rgba(0, 0, 0, 0.05); 
+  z-index: 99;
+  transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 3px solid #ffcf4b; 
+}
+
+/* Toggle Menu Button - Placed inside the topbar gap area */
+.toggle-btn {
+  position: fixed;
+  top: 25px;
+  left: 35px;
+  z-index: 101;
+  background: #ff7675;
+  color: #fff;
+  border: 3px solid #fff;
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 1.4rem;
+  box-shadow: 0 5px 0px #c0392b;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: block;
+  height: 50px;
+}
+
+/* Main Content Area - Full width by default */
+.main-content {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 105px;
+  padding: 30px;
+  transition: margin-left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+/* --- ACTIVE STATES (OPENING SIDEBAR EFFECTS) --- */
+
+/* When container gets active class, slide sidebar smoothly into position */
+#sidebar-container.active .sidebar {
+  left: 15px; 
+}
+
+/* Finds the topbar when the sidebar-container holds the active class */
+#sidebar-container:has(.active) ~ .topbar, 
+body:has(#sidebar-container.active) .topbar {
+  left: 280px !important;  
+  right: 20px !important;  
+}
+
+/* Also fix the toggle button positioning with the same logic */
+body:has(#sidebar-container.active) .toggle-btn {
+  left: 295px !important;
+}
+
+/* Also fix the main content layout stretch */
+body:has(#sidebar-container.active) .main-content {
+  margin-left: 280px !important;
+}
+
+
+
+
+/* --- Cleaned Presentation Components --- */
+#comfort {
+  font-size: 1.6rem;
+  color: #ff6b6b; 
+  text-shadow: 2px 2px 0px #fde2e2;
+  margin: 0; /* Cleared large padding breaking horizontal line limits */
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  background: #4ecdc4; 
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 0px #3cb3ab, 0 6px 10px rgba(0,0,0,0.1); 
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 35px;
+}
+
+.brand-mark {
+  background: #ff7675; 
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 12px;
+  border: 2px solid #fff;
+  box-shadow: 0 3px 0px #d64544;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffeaa7; 
+  text-shadow: 1px 2px 0px #4d3eb4;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 10px 15px;
+}
+
+.sidebar ul li a {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 16px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid transparent;
+}
+
+.sidebar ul li a:hover {
+  background: #ffeaa7;
+  color: #6c5ce7;
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 5px 0px #e5ba37;
+  border-color: #ffffff;
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0px #c0392b;
+}
+.toggle-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0px #c0392b;
+}
+
+/* --- Responsive Adjustments for Mobile Layouts --- */
+@media (max-width: 768px) {
+  #sidebar-container.active ~ .topbar {
+    left: 20px; 
+    padding-left: 80px;
+  }
+  #sidebar-container.active ~ .toggle-btn {
+    left: 35px;
+  }
+  #sidebar-container.active ~ .main-content {
+    margin-left: 20px;
+  }
+}

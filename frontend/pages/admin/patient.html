@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Patients | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base Page Layout & Heading */
+/* .main-content {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f4f7f6;
+    border-radius: 12px;
+} */
+
+.page-heading {
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+}
+
+.page-heading h2 {
+    color: #0f172a;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+}
+
+.page-heading p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* System Messages (Success/Error Alerts) */
+.message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #bae6fd;
+}
+
+/* Base Card Container */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+/* Table Wrapping and Responsiveness */
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Table Layout */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+}
+
+/* Header Styling */
+th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    padding: 14px 20px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Body Cell Rows */
+td {
+    padding: 16px 20px;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+/* Loading State Style */
+.loading {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+
+/* Actions Button/Link Placeholders (Bonus Styling) */
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0284c7;
+    background-color: #f0f9ff;
+    border: 1px solid #e0f2fe;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+    color: #ffffff;
+    background-color: #0284c7;
+    border-color: #0284c7;
+}
+
+    </style>
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()" aria-label="Toggle sidebar">☰</button>
+    <div id="topbar"></div>
+    <main class="main-content" id="main-content">
+        <div class="page-heading">
+            <div>
+                <h2>Patients</h2>
+                <p>Manage patient records connected to SmartCare.</p>
+            </div>
+        </div>
+        <div id="message" class="message" role="status" hidden></div>
+        <section class="card">
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>National Id</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patient-table-body">
+                        <tr>
+                            <td colspan="7" class="loading">Loading patients…</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="../../assets/js/components/admin.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/admin/patient.js"></script>
+</body>
+</html>

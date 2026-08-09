@@ -87,6 +87,11 @@ textarea { min-height: 120px; resize: vertical; }
 [hidden] {
     display: none !important;
 }
+.form-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin: 0.25rem 0 0.75rem;
+}
 @media (max-width: 560px) {
     .hero { grid-template-columns: 1fr; }
     .nav-toggle { display: inline-flex; }

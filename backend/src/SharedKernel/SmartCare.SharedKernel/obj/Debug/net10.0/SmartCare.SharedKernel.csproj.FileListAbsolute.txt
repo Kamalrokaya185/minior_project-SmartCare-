@@ -5,8 +5,8 @@ K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net1
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.AssemblyInfoInputs.cache
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.AssemblyInfo.cs
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.sourcelink.json
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.dll
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\refint\SmartCare.SharedKernel.dll
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.pdb
 K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\ref\SmartCare.SharedKernel.dll
-K:\minior_project\backend\src\SharedKernel\SmartCare.SharedKernel\obj\Debug\net10.0\SmartCare.SharedKernel.sourcelink.json

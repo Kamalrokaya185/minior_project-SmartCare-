@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+/* Base Page Styling */
+/* .main-content {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    /* padding: 30px;
+    max-width: 1200px; 
+    margin: 0 auto;
+    background-color: #f4f7f6;
+    border-radius: 12px;
+} */
+
+/* Header Design */
+.dashboard-header {
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+}
+
+.dashboard-title {
+    color: #0f172a;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Responsive Grid Rows */
+.stats-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Base Card Decoration */
+.stat-card {
+    background-color: #f1f0f0;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border-left: 5px solid #0284c7; /* Default blue accent */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Element Layouts */
+.stat-label {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    color: #1e293b;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* Status-Specific Accent Borders (Using the HTML data attributes) */
+.stat-card:has([data-stat="pendingClinics"]) {
+    border-left-color: #ea580c; /* Alert Orange */
+}
+
+.stat-card:has([data-stat="suspendedClinics"]) {
+    border-left-color: #dc2626; /* Danger Red */
+}
+
+.stat-card:has([data-stat="inactivePatients"]) {
+    border-left-color: #94a3b8; /* Muted Gray */
+}
+
+
+        </style>
+</head>
+<body>
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+
+    <header class="dashboard-header">
+        <h2 class="dashboard-title">Clinic Center</h2>
+    </header>
+
+    <section class="stats-group">
+        <div class="stat-card">
+            <div class="stat-label">Total Clinic</div>
+            <div class="stat-value" data-stat="totalClinics">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Active Clinic</div>
+            <div class="stat-value" data-stat="activeClinics">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Pending Clinic</div>
+            <div class="stat-value" data-stat="pendingClinics">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Suspend Clinic</div>
+            <div class="stat-value" data-stat="suspendedClinics">--</div>
+        </div>
+    </section>
+
+    <section class="stats-group">
+        <div class="stat-card">
+            <div class="stat-label">Total Patient</div>
+            <div class="stat-value" data-stat="totalPatients">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Active Patient</div>
+            <div class="stat-value" data-stat="activePatients">--</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Inactive Patient</div>
+            <div class="stat-value" data-stat="inactivePatients">--</div>
+        </div>
+    </section>
+
+</main>
+    <script src="../../assets/js/components/admin.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/admin/dashboard.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Admin Dashboard</title>
+    
+</head>
+
+<body>
+    <div class="page-shell">
+        <section class="hero">
+            <div>
+                <p class="eyebrow">SmartCare Super Admin</p>
+                <h1>Clinic Management Dashboard</h1>
+                <p>Select a clinic to open its dedicated management page.</p>
+            </div>
+            <div class="hero-badge">5 Clinics</div>
+        </section>
+
+        <section class="clinic-grid" aria-label="Clinic selection cards">
+            <a class="clinic-card" href="dental_clinic.html" data-page="dental_clinic.html">
+                <div class="icon-wrap">🦷</div>
+                <h2>Dental Clinic</h2>
+                <p>Advanced dental care and smile-focused treatments.</p>
+            </a>
+
+            <a class="clinic-card" href="derma_clinic.html" data-page="derma_clinic.html">
+                <div class="icon-wrap">🧴</div>
+                <h2>Derma Clinic</h2>
+                <p>Dermatology services for healthy and glowing skin.</p>
+            </a>
+
+           
+
+            <a class="clinic-card" href="eye_clinic.html" data-page="eye_clinic.html">
+                <div class="icon-wrap">👁️</div>
+                <h2>Eye Clinic</h2>
+                <p>Vision care, screenings, and ophthalmology support.</p>
+            </a>
+
+            
+
+           
+
+            <a class="clinic-card" href="gynecology_clinic.html" data-page="gynecology_clinic.html">
+                <div class="icon-wrap">🌸</div>
+                <h2>Gynecology Clinic</h2>
+                <p>Women's wellness, consultations, and specialist care.</p>
+            </a>
+
+            <a class="clinic-card" href="general_clinic.html" data-page="general_clinic.html">
+                <div class="icon-wrap">🏥</div>
+                <h2>General Clinic</h2>
+                <p>Primary care services for everyday health needs.</p>
+            </a>
+        </section>
+    </div>
+
+    <!-- <script src="super_admin.js"></script> -->
+</body>
+
+</html> -->

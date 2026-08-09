@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Department Management | SmartCare</title>
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/clinic/department.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="sidebar-container"></div>
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+
+    <main class="main-content" id="main-content">
+        <div class="page-heading-row">
+            <div>
+                <h1>Department Management</h1>
+                <p>Departments and the doctors assigned to each.</p>
+            </div>
+            <button class="btn btn-primary" id="addDepartmentBtn" type="button">Add Department</button>
+        </div>
+
+        <!-- Department cards render here, one per department, each with its own doctor table -->
+        <div id="departmentsContainer">
+            <p style="text-align:center; color:#94a3b8;">Loading departments...</p>
+        </div>
+    </main>
+
+    <!-- Add Department Modal -->
+    <div id="addDepartmentModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3>Add Department</h3>
+            <form id="addDepartmentForm" class="doctor-form">
+                <label>
+                    Department Name
+                    <input id="deptName" type="text" required />
+                </label>
+                <label>
+                    Description
+                    <input id="deptDescription" type="text" />
+                </label>
+                <div class="form-actions">
+                    <button class="btn btn-add" type="button" data-close="addDepartment">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Doctor Detail Modal -->
+<div id="detailModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content modal-wide">
+        <button class="modal-close" type="button" aria-label="Close">×</button>
+        <h3>Doctor Details</h3>
+        <div id="modalBody"></div>
+
+        <h4 style="margin-top:1.5rem;">Schedules</h4>
+        <div class="table-wrapper-approve">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Day / Date</th>
+                        <th>Time</th>
+                        <th>Slot Duration</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleBody">
+                    <tr><td colspan="6" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <!-- Add / Edit Doctor Modal -->
+    <div id="addDoctorModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3 id="doctorFormTitle">Add Doctor</h3>
+            <form id="addDoctorForm" class="doctor-form">
+                <label>
+                    Doctor Name
+                    <input id="fullName" type="text" required />
+                </label>
+                <label>
+                    Doctor Specialization
+                    <input id="specialization" type="text" required />
+                </label>
+                <label>
+                    Department
+                    <select id="departmentSelect" required></select>
+                </label>
+                <label>
+                    Medical License Number
+                    <input id="licenseNumber" type="text" required />
+                </label>
+                <label>
+                    Gender
+                    <select id="gender" name="gender">
+                        <option value="" disabled selected>-- Select gender --</option>
+                        <option value="male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+                <label>
+                    Consultation Fee
+                    <input id="consultationfee" type="number" required></input>
+                </label>
+                <fieldset class="schedule-fieldset">
+    <legend>Initial Schedule (optional)</legend>
+
+    <label>
+        Schedule Type
+        <select id="scheduleType">
+            <option value="">-- No schedule for now --</option>
+            <option value="recurring">Recurring (weekly)</option>
+            <option value="onetime">One-time (specific date)</option>
+        </select>
+    </label>
+
+    <label id="dayOfWeekWrapper" hidden>
+        Day of Week
+        <select id="dayOfWeek">
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="7">Sunday</option>
+        </select>
+    </label>
+
+    <label id="specificDateWrapper" hidden>
+        Specific Date
+        <input id="specificDate" type="date" />
+    </label>
+
+    <label id="effectiveFromWrapper" hidden>
+        Effective From
+        <input id="effectiveFrom" type="date" />
+    </label>
+
+    <label id="effectiveToWrapper" hidden>
+        Effective To (optional)
+        <input id="effectiveTo" type="date" />
+    </label>
+
+    <label id="startTimeWrapper" hidden>
+        Start Time
+        <input id="startTime" type="time" />
+    </label>
+
+    <label id="endTimeWrapper" hidden>
+        End Time
+        <input id="endTime" type="time" />
+    </label>
+
+    <label id="slotDurationWrapper" hidden>
+        Slot Duration (minutes)
+        <input id="slotDurationMinutes" type="number" min="5" step="5" value="20" />
+    </label>
+</fieldset>               
+                <div class="form-actions">
+                    <button class="btn btn-add" type="button" data-close="addDoctor">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../assets/js/components/clinic.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/clinic/department.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Clinic Management | SmartCare</title>
+    <!-- <link rel="stylesheet" href="style.css" /> 
+    <link rel="stylesheet" href="../../assets/css/panel.css">
+    <link rel="stylesheet" href="../../assets/css/clinic/doctor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity=""
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Sidebar Container 
+    <div id="sidebar-container"></div>
+     <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div id="topbar"></div>
+<main class="main-content" id="main-content">
+        <div>
+            <h1>Department Management</h1>
+            <p>Track department records in one place.</p>
+        </div>
+
+        <section class="card table-card">
+            <div class="table-header">
+                <h2>Department Overview</h2>
+                <div class="table-header-actions">
+                    <span class="table-summary">records available</span>
+                    <button class="btn btn-primary" id="addDepartmentBtn" type="button">Add Department</button>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Department Name</th>
+                            <th>Department Field</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deparmentTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    <div id="detailModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3>Department Details</h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div id="addModal" class="modal hidden" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" type="button" aria-label="Close">×</button>
+            <h3 id="formTitle">Add Department </h3>
+            <form id="addForm" class="doctor-form">
+                <label>
+                    Department Name
+                    <input id="departmentName" type="text" required />
+                </label>
+                
+                <div id="description">
+                    <label>
+                        Description department
+                        <input id="description" type="text" required />
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-cancle" type="button" data-close="add">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Save </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</main>
+    <script src="../../assets/js/components/clinic.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+    <script src="../../assets/js/clinic/department.js"></script>
+</body>
+</html> -->

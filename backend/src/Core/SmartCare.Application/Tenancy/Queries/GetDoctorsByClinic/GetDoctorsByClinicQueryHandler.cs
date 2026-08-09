@@ -19,17 +19,17 @@ public class GetDoctorsByClinicQueryHandler : IRequestHandler<GetDoctorsByClinic
     public async Task<IReadOnlyList<DoctorListItemDto>> Handle(GetDoctorsByClinicQuery request, CancellationToken ct)
     {
         var memberships = await _membershipRepository.GetByClinicAndDepartmentAsync(
-            request.ClinicId, request.DepartmentId, ct);
+            request.ClinicId, request.DepartmentId, request.ActiveOnly, ct);
 
         var result = new List<DoctorListItemDto>();
         foreach (var membership in memberships)
         {
             var doctor = await _doctorProfileRepository.GetByIdAsync(membership.DoctorId, ct);
-            if (doctor is null || !doctor.IsActive) continue;
+            if (doctor is null) continue;
 
             result.Add(new DoctorListItemDto(
                 membership.Id, doctor.Id, doctor.FullName, doctor.Specialization,
-                doctor.PhotoUrl, membership.ConsultationFee, membership.DepartmentId));
+                 membership.ConsultationFee, membership.DepartmentId, membership.IsActive, doctor.LicenseNumber, doctor.Gender));
         }
         return result;
     }

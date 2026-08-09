@@ -29,4 +29,11 @@ public class AppointmentRepository : IAppointmentRepository
         await _context.Appointments.AddAsync(appointment, ct);
 
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
+    public async Task<IReadOnlyList<Appointment>> GetByClinicAndDateAsync(
+    Guid clinicId, DateOnly date, CancellationToken ct = default) =>
+    await _context.Appointments
+        .Where(a => a.ClinicId == clinicId && a.AppointmentDate == date)
+        .OrderBy(a => a.AppointmentTime)
+        .ToListAsync(ct);
+
 }

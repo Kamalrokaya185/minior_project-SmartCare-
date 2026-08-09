@@ -13,10 +13,10 @@ K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistenc
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.AssemblyInfoInputs.cache
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.AssemblyInfo.cs
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.sourcelink.json
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCar.4979E670.Up2Date
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\refint\SmartCare.Infrastructure.Presistence.dll
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.pdb
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.genruntimeconfig.cache
 K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\ref\SmartCare.Infrastructure.Presistence.dll
-K:\minior_project\backend\src\Infrastructure\SmartCare.Infrastructure.Presistence\obj\Debug\net10.0\SmartCare.Infrastructure.Presistence.sourcelink.json

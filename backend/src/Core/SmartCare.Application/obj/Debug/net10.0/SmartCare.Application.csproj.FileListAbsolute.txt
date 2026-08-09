@@ -10,9 +10,9 @@ K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\Smart
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.AssemblyInfoInputs.cache
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.AssemblyInfo.cs
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.csproj.CoreCompileInputs.cache
+K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.sourcelink.json
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCar.7E67D3C8.Up2Date
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.dll
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\refint\SmartCare.Application.dll
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.pdb
 K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\ref\SmartCare.Application.dll
-K:\minior_project\backend\src\Core\SmartCare.Application\obj\Debug\net10.0\SmartCare.Application.sourcelink.json

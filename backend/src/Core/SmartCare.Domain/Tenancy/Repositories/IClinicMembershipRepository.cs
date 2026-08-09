@@ -7,5 +7,6 @@ public interface IClinicMembershipRepository
     Task AddAsync(ClinicMembership membership, CancellationToken ct = default);
     Task SaveChangesAsync(CancellationToken ct = default);
     Task<IReadOnlyList<ClinicMembership>> GetByClinicAndDepartmentAsync(
-        Guid clinicId, Guid? departmentId, CancellationToken ct = default);
+    Guid clinicId, Guid? departmentId, bool activeOnly, CancellationToken ct = default);
+    Task<ClinicMembership?> GetByClinicAndDoctorAsync(Guid clinicId, Guid doctorId, CancellationToken ct = default);
 }

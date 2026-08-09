@@ -17,13 +17,19 @@ public class ClinicMembershipRepository : IClinicMembershipRepository
     public async Task AddAsync(ClinicMembership membership, CancellationToken ct = default) =>
         await _context.ClinicMemberships.AddAsync(membership, ct);
     public async Task<IReadOnlyList<ClinicMembership>> GetByClinicAndDepartmentAsync(
-    Guid clinicId, Guid? departmentId, CancellationToken ct = default)
+    Guid clinicId, Guid? departmentId, bool activeOnly, CancellationToken ct = default)
     {
-        var query = _context.ClinicMemberships.Where(m => m.ClinicId == clinicId && m.IsActive);
+        var query = _context.ClinicMemberships.Where(m => m.ClinicId == clinicId);
+
+        if (activeOnly)
+            query = query.Where(m => m.IsActive);
+
         if (departmentId is not null)
             query = query.Where(m => m.DepartmentId == departmentId);
 
         return await query.ToListAsync(ct);
     }
     public Task SaveChangesAsync(CancellationToken ct = default) => _context.SaveChangesAsync(ct);
+    public Task<ClinicMembership?> GetByClinicAndDoctorAsync(Guid clinicId, Guid doctorId, CancellationToken ct = default) =>
+    _context.ClinicMemberships.FirstOrDefaultAsync(m => m.ClinicId == clinicId && m.DoctorId == doctorId, ct);
 }
